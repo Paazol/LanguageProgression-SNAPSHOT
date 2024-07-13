@@ -1,0 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Martian+Mono&display=swap');
+
+* {
+    font-family: "Martian Mono", monospace;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    background-image: url(/images/mainPage_Background.jpg);
+    background-size: cover;
+    filter: brightness(0.7);
+    z-index: -1;
+}
+
+body {
+    height: 100%;
+    margin: 0px;
+    display: grid;
+    place-items: center;
+}
+
+
+/* This button is opening navigation menu */
+.menuDIV {   
+    position: absolute;
+    align-items: center;
+    right: 25px;
+    bottom: 500px;
+    border-radius: 15px;
+}
+
+.menuIMG {
+    width: 50px;
+}
+
+.menuBUTTON {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    right: 30px;
+    top: 25px;
+    font-size: 24px;
+    color: #ffffff;
+    border: none;
+    border-bottom: 3px solid transparent;
+    padding: 5px;
+    padding-left: 2px;
+    border-radius: 15px;
+    background: linear-gradient(45deg, #332f2f, #161616);
+    transition: 0.15s;
+}
+
+.menuBUTTON:hover {
+    border-bottom: 3px solid #ff6464;
+}
+
+/* Connected with .menuBUTTON this part is controlling dropdown menu */
+.dropdownMenuDIV {
+    position: absolute;
+    display: none; 
+    padding: 10px 5px;
+    right: 30px;
+    top: 100px;
+    background: linear-gradient(45deg, #332f2f, #161616);
+    border-radius: 15px;
+    gap: 10px;
+    transition: 0.15s;
+}
+
+.dropdownMenuItems {
+    font-size: 20px;
+    padding: 7px;
+    color: #e9e9e9;
+    text-decoration: none; 
+    border-radius: 4px;
+    transition: 0.25s;
+    display: none;
+}
+
+.dropdownMenuItems:hover {
+    color: #ff6464;
+}
+
+
+@keyframes smootherAnimation {
+    0% {
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.2;
+    }
+    40% {
+        opacity: 0.4;
+    }
+    60% {
+        opacity: 0.6;
+    }
+    80% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.dropdownMenuDIV.dropdownButton-clicked {
+    animation: smootherAnimation 0.2s linear;
+    transition: opacity 0.2s ease-in-out, display 0.2s ease;
+    display: block;
+}
+
+.dropdownMenuDIV.dropdownButton-clicked a {
+    display: inline;
+}
+
+/* Profile page */
+.profileDIV {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 30%;
+    width: 600px;
+    height: 500px;
+}
+
+.profileBackground {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #903737;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: opacity(0.8) brightness(0.9);
+}
+
+.profileCardDIV {
+    position: relative;
+    width: 575px;
+    height: 475px;
+    border-radius: 30px;
+    background-color: #0e0707;
+    display: grid;
+    place-items: center;
+}
+
+
+/* follow button */
+.followBUTTON {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 150px;
+    height: 50px;
+    top: 35px;
+    color: #e9e9e9;
+    background-color: #903737;
+    border-color: transparent;
+    border-radius: 15px;
+    font-size: 20px; 
+    transition: 1s;
+}
+
+@keyframes followBUTTON-clickEffect {
+    0% {
+        background-color: #1b1d28;
+        opacity: 0.6;
+        transform: translateY(2px);
+    }
+
+    25% {
+        background-color: #30364f;
+        opacity: 0.7;
+
+    }
+
+    50% {
+        background-color: #3a3f54;
+        opacity: 0.8;
+    }
+
+    75% {
+        background-color: #4c547a;
+        opacity: 0.9;
+    }
+
+    100% {
+        background-color: #4b5582;
+        opacity: 1;
+    }
+}
+
+.followBUTTON.followBUTTON-clicked {
+    animation-timing-function: linear;
+    animation: followBUTTON-clickEffect  0.24s ease-in-out forwards;
+}
+
+
+@keyframes followBUTTON-releaseEffect {
+    0% {
+        background-color: #281b1b;
+        opacity: 0.6;
+        transform: translateY(2px);
+    }
+
+    25% {
+        background-color: #4f3030;
+        opacity: 0.7;
+
+    }
+
+    50% {
+        background-color: #543a3a;
+        opacity: 0.8;
+    }
+
+    75% {
+        background-color: #7a4c4c;
+        opacity: 0.9;
+    }
+
+    100% {
+        background-color: #903737;
+        opacity: 1;
+    }
+}
+
+.followBUTTON.followBUTTON-released {
+    animation-timing-function: linear;
+    animation: followBUTTON-releaseEffect  0.24s ease-in-out forwards;
+}
+
+
+/* view posts */
+.viewPostsSPAN {
+    position: relative;
+    cursor: pointer;
+    left: 30%;
+    border-bottom: 2px solid transparent;
+}
+
+
+.viewPosts {
+    color: #e9e9e9;
+    font-size: 20px;
+}
+
+.viewPostsSPAN:hover {
+    border-bottom: 2px solid  white;
+}
