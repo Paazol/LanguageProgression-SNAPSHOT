@@ -27,13 +27,15 @@ public class SecurityConfiguration {
 
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf(csrf -> csrf.disable()).authorizeHttpRequests(requests ->
-
-        requests.anyRequest().permitAll()
+        http.csrf(csrf -> csrf.disable())
+        
+        .authorizeHttpRequests((requests) -> requests
+				.requestMatchers("/profile").hasRole("USER")
+				.anyRequest().permitAll()
         )
         .formLogin(formLogin -> formLogin
         		.loginPage("/login")
-        		.defaultSuccessUrl("/").permitAll())
+        		.defaultSuccessUrl("/home").permitAll())
         		.userDetailsService(detailsImplementation)
         		.sessionManagement(session ->
         				session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

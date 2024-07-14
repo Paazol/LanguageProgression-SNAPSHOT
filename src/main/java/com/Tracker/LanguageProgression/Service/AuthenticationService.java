@@ -36,7 +36,7 @@ public class AuthenticationService {
 		return new AuthenticationResponse(token);
 	}
 
-	public AuthenticationResponse authentication(User request) {
+	public AuthenticationResponse login(User request) {
 
 		authenticationManager.authenticate(
 			new UsernamePasswordAuthenticationToken(

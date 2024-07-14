@@ -22,15 +22,15 @@ public class AuthController {
     public ResponseEntity<AuthenticationResponse> register(@ModelAttribute User request) {
         AuthenticationResponse response = authenticationService.register(request);
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Location", "/profile"); // Redirect to a success page after registration
+        headers.add("Location", "/profile");
         return ResponseEntity.status(HttpStatus.FOUND).headers(headers).body(response);
     }
 
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> login(@ModelAttribute User request) {
-        AuthenticationResponse response = authenticationService.authentication(request);
+        AuthenticationResponse response = authenticationService.login(request);
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Location", "/home"); // Redirect to a dashboard page after login
+        headers.add("Location", "/home");
         return ResponseEntity.status(HttpStatus.FOUND).headers(headers).body(response);
     }
 }
