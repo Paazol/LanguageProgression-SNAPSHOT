@@ -29,9 +29,7 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> login(@ModelAttribute User request) {
         AuthenticationResponse response = authenticationService.login(request);
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Location", "/home");
-        return ResponseEntity.status(HttpStatus.FOUND).headers(headers).body(response);
+        return ResponseEntity.ok(response);
     }
 }
 	
