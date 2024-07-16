@@ -30,7 +30,7 @@ public class Token {
     private boolean loggedOut;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "id", insertable=false, updatable=false)
     private User user;
 
 }

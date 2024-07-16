@@ -10,6 +10,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.Tracker.LanguageProgression.Entity.Role;
 import com.Tracker.LanguageProgression.Entity.Token;
 import com.Tracker.LanguageProgression.Entity.User;
 import com.Tracker.LanguageProgression.Model.AuthenticationResponse;
@@ -42,9 +43,9 @@ public class AuthenticationService {
         user.setEmail(request.getEmail());
         user.setUsername(request.getUsername());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setRole(Role.USER);
+        
 
-
-        user.setRole(request.getRole());
 
         user = userRepository.save(user);
 
@@ -113,7 +114,7 @@ public class AuthenticationService {
 
         // check if the user exist in database
         User user = userRepository.findByUsername(username)
-                .orElseThrow(()->new RuntimeException("No user found"));
+                .orElseThrow(() -> new RuntimeException("No user found"));
 
         // check if the token is valid
         if(jwtService.isValidRefreshToken(token, user)) {
