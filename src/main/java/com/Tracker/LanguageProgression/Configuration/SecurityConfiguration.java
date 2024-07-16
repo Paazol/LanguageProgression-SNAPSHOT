@@ -30,15 +30,14 @@ public class SecurityConfiguration {
         http.csrf(csrf -> csrf.disable())
         
         .authorizeHttpRequests((requests) -> requests
-				.requestMatchers("/profile").hasRole("USER")
+				.requestMatchers("/profile/**").hasRole("USER")
 				.anyRequest().permitAll()
         )
         .formLogin(formLogin -> formLogin
         		.loginPage("/login")
         		.defaultSuccessUrl("/home").permitAll())
         		.userDetailsService(detailsImplementation)
-        		.sessionManagement(session ->
-        				session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+ 
         		.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .httpBasic(Customizer.withDefaults());
 
