@@ -16,7 +16,7 @@
             <img class="menuIMG" src="/images/menu.png">Menu
         </div>
         <div class="dropdownMenuDIV">
-            <a class="dropdownMenuItems" href="profile">Profile</a>
+            <a class="dropdownMenuItems" th:href="@{/profile/{id}(id=${userID})}">Profile</a>
             <a class="dropdownMenuItems" href="#">Settings</a>
         </div>
     </div>

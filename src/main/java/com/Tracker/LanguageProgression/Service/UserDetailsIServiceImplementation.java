@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
+import com.Tracker.LanguageProgression.Entity.User;
 import com.Tracker.LanguageProgression.Repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -21,5 +22,9 @@ public class UserDetailsIServiceImplementation implements UserDetailsService {
 		return userRepository.findByUsername(username)
 				.orElseThrow(() -> new UsernameNotFoundException("User not found"));
 	}
+	
+	public User getUserById(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
 
 }

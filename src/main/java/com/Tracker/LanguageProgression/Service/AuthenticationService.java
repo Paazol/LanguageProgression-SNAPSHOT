@@ -33,7 +33,7 @@ public class AuthenticationService {
 
     public AuthenticationResponse register(User request) {
 
-        // check if user already exist. if exist than authenticate the user
+        // check if user already exist. if exist then authenticate a user
         if(userRepository.findByUsername(request.getUsername()).isPresent()) {
             return new AuthenticationResponse(null, null, "User already exist");
         }
@@ -45,7 +45,6 @@ public class AuthenticationService {
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setRole(Role.USER);
         
-
 
         user = userRepository.save(user);
 
