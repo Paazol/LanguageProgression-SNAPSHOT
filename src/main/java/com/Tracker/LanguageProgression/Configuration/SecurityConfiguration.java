@@ -12,7 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.Tracker.LanguageProgression.Service.UserDetailsIServiceImplementation;
+import com.Tracker.LanguageProgression.Service.UserDetailsServiceImplementation;
 
 import lombok.AllArgsConstructor;
 
@@ -21,7 +21,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class SecurityConfiguration {
 
-	private final UserDetailsIServiceImplementation detailsImplementation;
+	private final UserDetailsServiceImplementation detailsImplementation;
 	private final JwtAuthenticationFilter jwtAuthFilter;
 
     @Bean

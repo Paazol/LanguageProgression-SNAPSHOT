@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.Tracker.LanguageProgression.Service.JwtService;
-import com.Tracker.LanguageProgression.Service.UserDetailsIServiceImplementation;
+import com.Tracker.LanguageProgression.Service.UserDetailsServiceImplementation;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -24,7 +24,7 @@ import lombok.AllArgsConstructor;
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
-    private final UserDetailsIServiceImplementation userDetailsIService;
+    private final UserDetailsServiceImplementation userDetailsService;
 
     @Override
     protected void doFilterInternal(
@@ -45,7 +45,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         if(username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
-            UserDetails userDetails = userDetailsIService.loadUserByUsername(username);
+            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
 
             if(jwtService.isValid(token, userDetails)) {

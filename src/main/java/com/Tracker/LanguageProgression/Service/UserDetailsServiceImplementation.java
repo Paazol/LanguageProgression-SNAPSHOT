@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
-public class UserDetailsIServiceImplementation implements UserDetailsService {
+public class UserDetailsServiceImplementation implements UserDetailsService {
 
 	private final UserRepository userRepository;
 
@@ -22,9 +22,4 @@ public class UserDetailsIServiceImplementation implements UserDetailsService {
 		return userRepository.findByUsername(username)
 				.orElseThrow(() -> new UsernameNotFoundException("User not found"));
 	}
-	
-	public User getUserById(Long id) {
-        return userRepository.findById(id).orElse(null);
-    }
-
 }
