@@ -5,13 +5,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-import com.Tracker.LanguageProgression.Entity.User;
 import com.Tracker.LanguageProgression.Repository.UserRepository;
 
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 @Component
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class UserDetailsServiceImplementation implements UserDetailsService {
 
 	private final UserRepository userRepository;

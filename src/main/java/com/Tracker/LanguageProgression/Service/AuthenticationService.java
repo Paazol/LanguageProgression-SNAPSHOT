@@ -33,7 +33,7 @@ public class AuthenticationService {
 
     public AuthenticationResponse register(User request) {
 
-        // check if user already exist. if exist then authenticate a user
+        // check if user already exist. if exist then authenticate him
         if(userRepository.findByUsername(request.getUsername()).isPresent()) {
             return new AuthenticationResponse(null, null, "User already exist");
         }

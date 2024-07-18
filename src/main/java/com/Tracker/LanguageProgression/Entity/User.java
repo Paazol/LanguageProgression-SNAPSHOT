@@ -20,9 +20,9 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name="users")
+@Table(name = "users")
 @SequenceGenerator(name = "user_seq", sequenceName = "users_SEQ", allocationSize = 1)
-public class User implements UserDetails{
+public class User implements UserDetails {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
@@ -38,7 +38,7 @@ public class User implements UserDetails{
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_" + role.name()));
-    }
+		return List.of(new SimpleGrantedAuthority("ROLE_" + role.name()));
+	}
 
 }
