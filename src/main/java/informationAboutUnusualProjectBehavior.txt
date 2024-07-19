@@ -1,0 +1,1 @@
+1. Following function is located in /static/js/following.js

@@ -43,6 +43,7 @@ public class AuthenticationService {
         user.setEmail(request.getEmail());
         user.setUsername(request.getUsername());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setLevelOfEnglish(request.getLevelOfEnglish());
         user.setRole(Role.USER);
         
 
