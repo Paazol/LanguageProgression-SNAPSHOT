@@ -22,7 +22,7 @@ public class AuthController {
     public ResponseEntity<AuthenticationResponse> register(@ModelAttribute User request) {
         AuthenticationResponse response = authenticationService.register(request);
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Location", "/profile");
+        headers.add("Location", "/home");
         return ResponseEntity.status(HttpStatus.FOUND).headers(headers).body(response);
     }
 

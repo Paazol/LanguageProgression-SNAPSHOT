@@ -7,14 +7,12 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.Tracker.LanguageProgression.Service.UserDetailsServiceImplementation;
+import com.Tracker.LanguageProgression.Service.AdditionalUserDetails;
 
 import lombok.AllArgsConstructor;
 
@@ -23,7 +21,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class SecurityConfiguration {
 
-	private final UserDetailsServiceImplementation detailsImplementation;
+	private final AdditionalUserDetails additionalUserDetails;
 	private final JwtAuthenticationFilter jwtAuthFilter;
 
     @Bean
@@ -42,7 +40,7 @@ public class SecurityConfiguration {
         .formLogin(formLogin -> formLogin
         		.loginPage("/login")
         		.defaultSuccessUrl("/home").permitAll())
-        		.userDetailsService(detailsImplementation)
+        		.userDetailsService(additionalUserDetails)
         		.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .httpBasic(Customizer.withDefaults());
 
