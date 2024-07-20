@@ -11,7 +11,7 @@
     width: 100%;
     height: 100%;
     background-color: black;
-    background-image: url(/images/mainPage_Background.jpg);
+    background-image: url(/src/main/resources/static/images/mainPage_Background.jpg);
     background-size: cover;
     filter: brightness(0.7);
     z-index: -1;
@@ -256,4 +256,11 @@ body {
 
 .viewPostsSPAN:hover {
     border-bottom: 2px solid  white;
+}
+
+.levelOfEnglish {
+    position: relative;
+    top: 180px;
+    right: 120px;
+    color: rgb(255, 255, 255);
 }

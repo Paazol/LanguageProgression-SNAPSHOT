@@ -17,7 +17,12 @@ import lombok.AllArgsConstructor;
 public class AdditionalUserDetails implements UserDetailsService {
 
 	private final UserRepository userRepository;
-
+	
+	private User getAuthenticatedUser() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		return (User) authentication.getPrincipal();
+	}
+	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
@@ -25,14 +30,17 @@ public class AdditionalUserDetails implements UserDetailsService {
 				.orElseThrow(() -> new UsernameNotFoundException("User not found"));
 	}
 
-	public Long getAuthenticatedUserID() {
+	public Long getUserID() {
 
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		
-		// getting an id of a currently logined user
-		User customUser = (User) authentication.getPrincipal();
-		Long id = customUser.getId();
+		Long id = getAuthenticatedUser().getId();
 		return id;
 
 	}
+	
+	public String getLevelOfEnglish() {
+		
+		String levelOfEnglish = getAuthenticatedUser().getLevelOfEnglish();
+		return levelOfEnglish;
+	}
+	
 }

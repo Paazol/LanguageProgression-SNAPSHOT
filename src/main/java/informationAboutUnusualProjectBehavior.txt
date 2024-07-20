@@ -1,1 +1,2 @@
 1. Following function is located in /static/js/following.js
+2. All HTML (Thymeleaf) variables are defining in the HomeController.java

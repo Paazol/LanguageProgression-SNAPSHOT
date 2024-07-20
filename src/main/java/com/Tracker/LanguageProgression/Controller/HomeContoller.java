@@ -17,8 +17,11 @@ public class HomeContoller {
 	@GetMapping("/home")
 	public String home(Model model) {
 		
-		// adding id to the frontend
-		Long id = userDetails.getAuthenticatedUserID();
+		// WELL, i don't really know where to define all those variables so they'll be there
+		Long id = userDetails.getUserID();
+		String levelOfEnglish = userDetails.getLevelOfEnglish();
+		
+		model.addAttribute("levelOfEnglish", levelOfEnglish);
 		model.addAttribute("id", id);
 		return "home";
 	}
