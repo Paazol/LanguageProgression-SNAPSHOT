@@ -28,11 +28,7 @@ public class AdditionalUserDetails implements UserDetailsService {
 	public Long getAuthenticatedUserID() {
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-		if (authentication == null || !(authentication.getPrincipal() instanceof User)) {
-			throw new IllegalStateException("User is not authenticated");
-		}
-
+		
 		// getting an id of a currently logined user
 		User customUser = (User) authentication.getPrincipal();
 		Long id = customUser.getId();

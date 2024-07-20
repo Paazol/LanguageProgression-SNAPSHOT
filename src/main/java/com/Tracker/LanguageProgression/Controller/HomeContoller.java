@@ -16,6 +16,8 @@ public class HomeContoller {
 	
 	@GetMapping("/home")
 	public String home(Model model) {
+		
+		// adding id to the frontend
 		Long id = userDetails.getAuthenticatedUserID();
 		model.addAttribute("id", id);
 		return "home";
