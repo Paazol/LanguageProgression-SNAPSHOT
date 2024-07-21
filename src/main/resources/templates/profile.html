@@ -1,6 +1,7 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8"/>
     <title>Profile</title>
     <link rel="stylesheet" type="text/css" href="/css/profile.css">
     <script src="/js/dropDownBUTTON.js"></script>
@@ -14,8 +15,12 @@
 
             <div class="profileCardDIV">
                 <img class="userAvatar">
-                <span class="levelOfEnglish" >Estimated language level: </span th:text="${levelOfEnglish}"> 
-                <span class="viewPostsSPAN"><a class="viewPosts">View posts</a></span>
+                <span class="levelOfEnglishSPAN">
+                    <p class="levelOfEnglish">Level:
+                         <span th:text="${session.levelOfEnglish}"></span>
+                    </p>
+                </span> 
+                <span class="viewPostsSPAN"><a class="viewPosts" th:href="${'/profile/' + session.id + '/posts'}">View posts</a></span>
                 <button class="followBUTTON">Follow</button>     
             </div>
     </div>
