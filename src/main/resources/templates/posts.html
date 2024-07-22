@@ -5,17 +5,17 @@
     <title>Posts</title>
     <link rel="stylesheet" type="text/css" href="/css/posts.css">
     <script src="/js/dropDownBUTTON.js"></script>
-    <script src = "/js/following.js"></script>
 </head>
 <body>
     <div class="background"></div> 
 
     <div class="postDIV">
-            <div class="postBackground"></div>
-
-            <div class="postCardDIV">
-            </div>
+            <div class="postBackground"></div> 
+            <!-- Not nested cuz of the filter which is
+             applied to postBackground -->
+            <div class="postCardDIV"></div>
     </div>
+
 
     <div class="dropdown">
         <div class="menuDIV">
@@ -24,6 +24,7 @@
         </div>
         <div class="dropdownMenuDIV">
             <a class="dropdownMenuItems" href="/home">Home</a>
+            <a class="dropdownMenuItems" th:href="'/profile/' + ${session.id}" th:if="${session.id != null}">Profile</a>
             <a class="dropdownMenuItems" href="/settings">Settings</a>
         </div>
     </div>

@@ -115,7 +115,7 @@ body {
 }
 
 .dropdownMenuDIV.dropdownButton-clicked a {
-    display: inline;
+    display: block;
 }
 
 .postDIV {

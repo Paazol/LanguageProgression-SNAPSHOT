@@ -16,7 +16,8 @@
             <img class="menuIMG" src="/images/menu.png">Menu
         </div>
         <div class="dropdownMenuDIV">
-            <a class="dropdownMenuItems" th:href="'/profile/' + ${session.id}">Profile</a>
+            <a class="dropdownMenuItems" th:href="'/profile/' + ${session.id}" th:if="${session.id != null}">Profile</a>
+            <a class="dropdownMenuItems" href="/login" th:if="${session.id == null}">Login</a>
             <a class="dropdownMenuItems" href="#">Settings</a>
         </div>
     </div>
