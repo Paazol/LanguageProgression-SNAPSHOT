@@ -14,8 +14,6 @@ public class ProfileController {
 	
 	@GetMapping(path = {"/profile/{id}"})
 	public String profile(HttpSession session) {
-		
-		
         return "profile";
 	}
 }

@@ -1,2 +1,3 @@
 1. Following function is located in /static/js/following.js
 2. All HTML (Thymeleaf) variables are determined in the HomeController.java
+3. Background DIVs are alone because of a filter

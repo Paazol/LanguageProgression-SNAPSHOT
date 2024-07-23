@@ -8,7 +8,11 @@ public class PostsController {
 	
 	@GetMapping("/profile/{id}/posts")
 	public String posts() {
-		
 		return "posts";
-	}	
+	}
+	
+	@GetMapping("/profile/{id}/posts/create")
+	public String postsCreate() {
+		return "createPosts";
+	}
 }

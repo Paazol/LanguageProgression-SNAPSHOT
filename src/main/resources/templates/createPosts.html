@@ -5,40 +5,43 @@
     <title>Creation</title>
     <link rel="stylesheet" type="text/css" href="/css/createPosts.css">
     <script src="/js/dropDownBUTTON.js"></script>
+    <script src="/js/displayLevelsButton.js"></script>
 </head>
 <body>
-    <div class="background"></div> 
+<div class="background"></div> 
 
-    <div class="postDIV">
-            <div class="postBackground"></div>
-            <!-- Not nested cuz of the filter which is
-             applied to the postBackground -->
-            <div class="postCardDIV">
-                <input name="title" class="title" placeholder="Post title" maxlength="100">
-                <button name="suggestedLevelOfEnglishBUTTON" class="suggestedLevelOfEnglishBUTTON">Display levels</button>
-                <div class="levelCheckboxes"> 
-                    <input type="checkbox" id="A0">A0</input>
-                    <input type="checkbox" id="A1">A1</input>
-                    <input type="checkbox" id="A2">A2</input>
-                    <input type="checkbox" id="B1">B1</input>
-                    <input type="checkbox" id="B2">B2</input>
-                    <input type="checkbox" id="C1">C1</input>
-                    <input type="checkbox" id="C2">C2</input>
-                </div>
-                <textarea name="containment" id="containment" rows="15" cols="100" placeholder="Main text"></textarea>
+<div class="postDIV">
+    <div class="postBackground"></div>
+
+    <form th:action="@{/profile/{session.id}/posts/create}" method="post">
+        <div class="postCardDIV">
+            <input name="title" class="title" placeholder="Post title" maxlength="100">
+            <button name="suggestedLevelOfEnglishBUTTON" class="suggestedLevelOfEnglishBUTTON">Display levels</button>
+            <div class="levelCheckboxesDIV"> 
+                <label for="A0"><input type="checkbox" id="A0">A0</label>
+                <label for="A1"><input type="checkbox" id="A1">A1</label>
+                <label for="A2"><input type="checkbox" id="A2">A2</label>
+                <label for="B1"><input type="checkbox" id="B1">B1</label>
+                <label for="B2"><input type="checkbox" id="B2">B2</label>
+                <label for="C1"><input type="checkbox" id="C1">C1</label>
+                <label for="C2"><input type="checkbox" id="C2">C2</label>
             </div>
-    </div>
+            <textarea name="containment" id="containment" rows="18" cols="100" placeholder="Main text"></textarea>
+            <button type="submit" class="sendDataBUTTON">Push!</button>
+        </div>
+    </form>
+</div>
 
-    <div class="dropdown">
-        <div class="menuDIV">
-            <button class="menuBUTTON">
-            <img class="menuIMG" src="/images/menu.png">Menu
-        </div>
-        <div class="dropdownMenuDIV">
-            <a class="dropdownMenuItems" href="/home">Home</a>
-            <a class="dropdownMenuItems" th:href="'/profile/' + ${session.id}" th:if="${session.id != null}">Profile</a>
-            <a class="dropdownMenuItems" href="/settings">Settings</a>
-        </div>
+<div class="dropdown">
+    <div class="menuDIV">
+        <button class="menuBUTTON">
+        <img class="menuIMG" src="/images/menu.png">Menu
     </div>
+    <div class="dropdownMenuDIV">
+        <a class="dropdownMenuItems" href="/home">Home</a>
+        <a class="dropdownMenuItems" th:href="'/profile/' + ${session.id}" th:if="${session.id != null}">Profile</a>
+        <a class="dropdownMenuItems" href="/settings">Settings</a>
+    </div>
+</div>
 </body>
 </html>

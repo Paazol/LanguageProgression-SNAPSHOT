@@ -13,9 +13,9 @@ public class PostsService {
 	
 	private PostsRepository postsRepository;
 	
-	public void savingPost(Posts posts) {
+	public void createPost(Posts posts) {
 		
-		posts.setName(posts.getName());
+		posts.setTitle(posts.getTitle());
 		posts.setContainment(posts.getContainment());
 		posts.setSuggestedLevelOfEnglish(posts.getSuggestedLevelOfEnglish());
 		
