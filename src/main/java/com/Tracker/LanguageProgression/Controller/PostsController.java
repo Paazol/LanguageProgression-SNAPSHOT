@@ -11,8 +11,10 @@ public class PostsController {
 		return "posts";
 	}
 	
+	
 	@GetMapping("/profile/{id}/posts/create")
 	public String postsCreate() {
 		return "createPosts";
 	}
+
 }

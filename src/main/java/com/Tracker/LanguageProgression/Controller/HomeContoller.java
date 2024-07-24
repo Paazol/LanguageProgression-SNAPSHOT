@@ -23,6 +23,8 @@ public class HomeContoller {
 		
 		// Checking to prevent the site from being down
 		// cause of a null id's
+		// Lol just noticed, for some reason if you're removing this one 
+		// the site is just getting demolished
 		if (principal != null || principal instanceof AnonymousAuthenticationToken) {
 		// WELL, i don't really know where to define all those variables so they'll be here
 		Long id = userDetails.getUserID();
