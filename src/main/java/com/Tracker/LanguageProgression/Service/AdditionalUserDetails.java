@@ -1,5 +1,7 @@
 package com.Tracker.LanguageProgression.Service;
 
+import java.util.Optional;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,6 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.Tracker.LanguageProgression.Entity.User;
+import com.Tracker.LanguageProgression.Exception.InvalidIDException;
 import com.Tracker.LanguageProgression.Repository.UserRepository;
 
 import lombok.AllArgsConstructor;
@@ -30,9 +33,9 @@ public class AdditionalUserDetails implements UserDetailsService {
 				.orElseThrow(() -> new UsernameNotFoundException("User not found"));
 	}
 	
-	public UserDetails loadUserById(Long id) {
+	public User loadUserById(Long id) {
 		
-		return userRepository.findById(id);
+		return userRepository.findById(id).orElseThrow(() -> new InvalidIDException(id));
 	}
 
 	public Long getAuthenticatedUserID() {
