@@ -145,3 +145,55 @@ body {
 .dropdownMenuDIV.dropdownButton-clicked a {
     display: block;
 }
+
+.postDIV {
+    position: relative;
+    display: flex;
+    margin: 15px;
+    justify-content: center;
+    align-items: center;
+    right: 120px;
+    width: 1300px;
+    height: 150px;
+}
+
+.postBackground {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: #903737;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: opacity(0.8) brightness(0.9);
+}
+
+.postCardDIV {
+    color: #e9e9e9;
+    position: relative;
+    width: 99%;
+    height: 95%;
+    border-radius: 30px;
+    background-color: #0e0707;
+    display: grid;
+}
+
+/* Containings of cardDIV */
+.titleH5 {
+    position: absolute;
+    text-align: left;
+    font-size: 20px;
+    
+    left: 400px;
+    bottom: 70px;
+    max-width: 100%;
+}
+
+.containmentPARAGRAPH {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 100%;
+}

@@ -11,6 +11,17 @@
 
     <div class="dropdown">
 
+        <div th:each="post : ${posts}">
+            <div class="postDIV">
+                <div class="postBackground"></div>
+                <div class="postCardDIV">
+                    <h5 class="titleH5" th:text="${post.title}"></h5>
+                    <small class="suggestedLevelOfEnglishSMALL" th:text="${post.suggestedLevelOfEnglish}"></small>
+                    <p class="containmentPARAGRAPH" th:text="${post.containment}"></p>
+                </div>
+            </div>
+        </div>
+
         <div class="menuDIV">
             <button class="menuBUTTON">
             <img class="menuIMG" src="/images/menu.png">Menu

@@ -1,5 +1,7 @@
 package com.Tracker.LanguageProgression.Service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.Tracker.LanguageProgression.Entity.Posts;
@@ -20,5 +22,9 @@ public class PostsService {
 		posts.setSuggestedLevelOfEnglish(posts.getSuggestedLevelOfEnglish());
 		
 		postsRepository.save(posts);
+	}
+	
+	public List<Posts> getAllPosts() {
+		return postsRepository.findAll();
 	}
 }
