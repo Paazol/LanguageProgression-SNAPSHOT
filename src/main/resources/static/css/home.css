@@ -182,18 +182,26 @@ body {
 
 /* Containings of cardDIV */
 .titleH5 {
-    position: absolute;
-    text-align: left;
+    position: relative;
     font-size: 20px;
-    
-    left: 400px;
-    bottom: 70px;
+    text-align: center;
+    bottom: 20px;
     max-width: 100%;
 }
 
 .containmentPARAGRAPH {
+    /* Wanted to use position: relative;
+     but for some reason pos: rel; in the titleH5 is breaking it*/
+    position: relative;
     text-overflow: ellipsis;
     overflow: hidden;
-    white-space: nowrap;
-    max-width: 100%;
+    left: 180px;
+    bottom: 50px;
+    max-width: 85%;
+}
+
+.suggestedLevelOfEnglishSMALL {
+    position: absolute;
+    bottom: 105px;
+    left: 1090px;
 }

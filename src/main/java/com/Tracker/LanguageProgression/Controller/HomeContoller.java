@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.Tracker.LanguageProgression.Repository.UserRepository;
 import com.Tracker.LanguageProgression.Service.AdditionalUserDetails;
 import com.Tracker.LanguageProgression.Service.PostsService;
 
@@ -19,6 +20,7 @@ public class HomeContoller {
 	
 	AdditionalUserDetails userDetails;
 	PostsService postsService;
+	UserRepository repository;
 	
 	@GetMapping("/home")
 	public String home(Principal principal, HttpSession session, Model model) {
@@ -30,10 +32,13 @@ public class HomeContoller {
 		// the site is just getting demolished
 		if (principal != null || principal instanceof AnonymousAuthenticationToken) {
 		// WELL, i don't really know where to define all those variables so they'll be here
-			Long id = userDetails.getUserID();
+			Long id = userDetails.getAuthenticatedUserID();
+			String user = userDetails.getUserID();
 			String levelOfEnglish = userDetails.getLevelOfEnglish();
 			System.out.println(postsService.getAllPosts());
 			model.addAttribute("posts", postsService.getAllPosts());
+			model.addAttribute("user", );
+			
 			
 			session.setAttribute("levelOfEnglish", levelOfEnglish);
 			session.setAttribute("id", id);

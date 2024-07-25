@@ -29,8 +29,13 @@ public class AdditionalUserDetails implements UserDetailsService {
 		return userRepository.findByUsername(username)
 				.orElseThrow(() -> new UsernameNotFoundException("User not found"));
 	}
+	
+	public UserDetails loadUserById(Long id) {
+		
+		return userRepository.findById(id);
+	}
 
-	public Long getUserID() {
+	public Long getAuthenticatedUserID() {
 
 		Long id = getAuthenticatedUser().getId();
 		return id;
