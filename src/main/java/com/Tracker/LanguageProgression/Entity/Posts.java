@@ -17,7 +17,7 @@ public class Posts {
 	private Long id;
 
 	private String title;
-	@Size(max = 10000)
+	@Size(max = 15100)
 	private String containment;
 	private String suggestedLevelOfEnglish;
 }

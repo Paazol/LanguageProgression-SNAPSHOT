@@ -17,16 +17,7 @@
     z-index: -1;
 }
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: auto;
-}
-
-
 .menuDIV {
-    
     position: absolute;
     align-items: center;
     right: 0;
@@ -148,60 +139,72 @@ body {
 
 .postDIV {
     position: relative;
-    display: flex;
+    display: table;
+    width: 1400px;
     margin: 15px;
-    justify-content: center;
-    align-items: center;
     right: 120px;
-    width: 1300px;
     height: 150px;
+    left: 0px;
 }
 
 .postBackground {
     position: absolute;
     display: flex;
-    width: 100%;
-    height: 100%;
-    background-color: #903737;
-    border-radius: 30px;
-    display: flex;
     justify-content: center;
     align-items: center;
+    width: 1400px;
+    height: 206px;
+    background-color: #903737;
+    border-radius: 30px;
+    
     filter: opacity(0.8) brightness(0.9);
 }
 
 .postCardDIV {
-    color: #e9e9e9;
     position: relative;
-    width: 99%;
-    height: 95%;
-    border-radius: 30px;
-    background-color: #0e0707;
     display: grid;
+    color: #e9e9e9;
+    background-color: #0e0707;
+    width: 99%;
+    height: 200px;
+    top: 3px;
+    left: 7px;
+    border-radius: 30px;
 }
 
 /* Containings of cardDIV */
-.titleH5 {
+
+.titlePARAGRAPH {
     position: relative;
     font-size: 20px;
     text-align: center;
-    bottom: 20px;
+    bottom: 95px;
     max-width: 100%;
 }
 
 .containmentPARAGRAPH {
-    /* Wanted to use position: relative;
-     but for some reason pos: rel; in the titleH5 is breaking it*/
     position: relative;
+    overflow-wrap: anywhere; /* Ensure text breaks within the container */
     text-overflow: ellipsis;
-    overflow: hidden;
-    left: 180px;
-    bottom: 50px;
-    max-width: 85%;
+    overflow-y: hidden;
+    left: 180px; /* Adjust left position */
+    bottom: 110px; /* Adjust bottom position */
+    width: 1160px; /* Set a maximum width */
+    line-clamp: 1;
+    height: 100%;
 }
 
 .suggestedLevelOfEnglishSMALL {
-    position: absolute;
-    bottom: 105px;
-    left: 1090px;
+    position: relative;
+    bottom: 125px;
+    left: 1160px;
+    width: 180px;
+}
+
+.authorOfAPost {
+    position: relative;
+    text-align: left;
+    top: 110px;
+    left: 10px;
+    width: 170px;
 }
