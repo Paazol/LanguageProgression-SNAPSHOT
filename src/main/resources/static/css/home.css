@@ -184,27 +184,31 @@
 
 .containmentPARAGRAPH {
     position: relative;
-    overflow-wrap: anywhere; /* Ensure text breaks within the container */
+    overflow-wrap: anywhere;
     text-overflow: ellipsis;
-    overflow-y: hidden;
-    left: 180px; /* Adjust left position */
-    bottom: 110px; /* Adjust bottom position */
-    width: 1160px; /* Set a maximum width */
-    line-clamp: 1;
-    height: 100%;
+    overflow: hidden;
+    left: 180px;
+    bottom: 110px;
+    width: 1160px;
+    height: 80px;
+    line-height: 20px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
 }
 
 .suggestedLevelOfEnglishSMALL {
     position: relative;
-    bottom: 125px;
-    left: 1160px;
+    bottom: 140px;
+    left: 1180px;
     width: 180px;
 }
 
 .authorOfAPost {
     position: relative;
     text-align: left;
-    top: 110px;
-    left: 10px;
+    top: 115px;
+    left: 7px;
     width: 170px;
 }
