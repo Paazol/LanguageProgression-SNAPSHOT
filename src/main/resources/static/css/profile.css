@@ -160,7 +160,7 @@ body {
     cursor: pointer;
     width: 150px;
     height: 50px;
-    top: 35px;
+    top: 5px;
     color: #e9e9e9;
     background-color: #903737;
     border-color: transparent;
@@ -238,12 +238,11 @@ body {
     animation: followBUTTON-releaseEffect  0.24s ease-in-out forwards;
 }
 
-
 /* view posts */
 .viewPostsSPAN {
     position: relative;
     cursor: pointer;
-    right: 196px;
+    left: 200px;
     border-bottom: 2px solid transparent;
 }
 
@@ -258,13 +257,22 @@ body {
 }
 
 .levelOfEnglish {
-    
     position: relative;
     top: 200px;
-    right: 215px;
+    left: 215px;
     color: rgb(255, 255, 255);
 }
 
 .levelOfEnglishSPAN p {
     color: white;
+}
+
+#profilePicture {
+    position: relative;
+    cursor: pointer;
+    justify-content: center;
+    padding: 5px;
+    width: 225px;
+    top: 270px;
+    right: 152px;
 }

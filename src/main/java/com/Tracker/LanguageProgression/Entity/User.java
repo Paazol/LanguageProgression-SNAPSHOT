@@ -14,6 +14,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -30,12 +31,17 @@ public class User implements UserDetails {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
 	@Column(name = "id")
 	private Long id;
+	
+	@Lob
+	private byte[] profilePicture;
 
 	private String username;
 	private String password;
 	private String email;
 	private String levelOfEnglish;
 	private Integer followers;
+	
+	
 
 	@Enumerated(EnumType.STRING)
 	private Role role;
