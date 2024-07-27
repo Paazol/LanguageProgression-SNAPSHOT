@@ -1,5 +1,6 @@
 package com.Tracker.LanguageProgression.Service;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.http.HttpHeaders;
@@ -9,6 +10,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.Tracker.LanguageProgression.Entity.Role;
 import com.Tracker.LanguageProgression.Entity.Token;
@@ -19,6 +21,7 @@ import com.Tracker.LanguageProgression.Repository.UserRepository;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 
 @Service
@@ -54,7 +57,14 @@ public class AuthenticationService {
 		return new AuthenticationResponse(accessToken, refreshToken, "User registration was successful");
 
 	}
-
+	
+	public User saveProfilePicture(HttpSession session, MultipartFile profilePicture) throws IOException {
+		Long userID = (Long) session.getAttribute("id");
+		User user = userRepository.findById(userID).orElseThrow();
+		user.setProfilePicture(profilePicture.getBytes());
+		return userRepository.save(user);
+	}
+	
 	public AuthenticationResponse login(User request) {
 		authenticationManager
 				.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));

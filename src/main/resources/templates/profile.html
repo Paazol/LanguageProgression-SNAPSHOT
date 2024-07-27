@@ -11,22 +11,25 @@
     <div class="background"></div> 
 
     <div class="profileDIV">
-            <div class="profileBackground"></div>
+        <div class="profileBackground"></div>
 
             <!-- @TODO make user being able
               to set their avatars and make it look fine-->
-
-            <div class="profileCardDIV">
-                <input id="profilePicture" name="profilePicture" type="file" draggable="true">
-                <img class="userAvatar">
-                <span class="levelOfEnglishSPAN">
-                    <p class="levelOfEnglish">
-                        Level: <span th:text="${session.levelOfEnglish}"></span>
-                    </p>
-                </span> 
-                <span class="viewPostsSPAN"><a class="viewPosts" th:href="${'/profile/' + session.id + '/posts'}">View posts</a></span>
-                <button class="followBUTTON">Follow</button>     
-            </div>
+        <div class="profileCardDIV">
+    <form th:action="${'/profile/' + session.id + '/upload'}" method="post" enctype="multipart/form-data">
+            <button class="profilePictureBUTTON" type="submit">Upload avatar</button>
+            <input id="profilePicture" name="profilePicture" type="file" draggable="true">
+    </form>
+            <img class="userAvatar" th:src="'data:image/png;base64,' + {profilePicture}" alt="Ohh, no image">
+            <span class="levelOfEnglishSPAN">
+                <p class="levelOfEnglish">
+                    Level: <span th:text="${session.levelOfEnglish}"></span>
+                </p>
+            </span> 
+            <span class="viewPostsSPAN"><a class="viewPosts" th:href="${'/profile/' + session.id + '/posts'}">View posts</a></span>
+            <button class="followBUTTON">Follow</button>     
+        </div>
+    
     </div>
 
     <div class="dropdown">
