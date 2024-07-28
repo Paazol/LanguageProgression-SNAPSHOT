@@ -1,8 +1,14 @@
 package com.Tracker.LanguageProgression.Service;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+import javax.imageio.ImageIO;
+
+import org.imgscalr.Scalr;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +16,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.Tracker.LanguageProgression.Entity.Role;
@@ -58,12 +65,33 @@ public class AuthenticationService {
 
 	}
 	
-	public User saveProfilePicture(HttpSession session, MultipartFile profilePicture) throws IOException {
-		Long userID = (Long) session.getAttribute("id");
-		User user = userRepository.findById(userID).orElseThrow();
-		user.setProfilePicture(profilePicture.getBytes());
-		return userRepository.save(user);
-	}
+	
+	public User saveProfilePicture(@RequestParam("profilePicture") MultipartFile profilePicture, HttpSession session) throws IOException {
+		
+		// resizing
+        int targetWidth = 250;
+        int targetHeight = 250;
+        
+        //from multipartfile to the bufferedimage
+        BufferedImage originalImage = ImageIO.read(new ByteArrayInputStream(profilePicture.getBytes()));
+        //resizing an image
+        BufferedImage resizedImage = Scalr.resize(originalImage, Scalr.Method.AUTOMATIC, Scalr.Mode.FIT_EXACT, targetWidth, targetHeight);
+		
+        
+        // converting BufferedImage back to byte array
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ImageIO.write(resizedImage, "jpg", baos);
+        byte[] resizedImageBytes = baos.toByteArray();
+
+        
+        
+        // save everything
+        Long userID = (Long) session.getAttribute("id");
+        User user = userRepository.findById(userID).orElseThrow(() -> new RuntimeException("User not found"));
+        user.setProfilePicture(resizedImageBytes);
+        baos.close();
+        return userRepository.save(user);
+    }
 	
 	public AuthenticationResponse login(User request) {
 		authenticationManager
