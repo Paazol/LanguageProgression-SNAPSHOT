@@ -9,12 +9,6 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class ProfileController {
 	
-	// TODO halfway to my goal
-	// i want to specify id of an image, f.e. - /profile/{userID}/upload/{imageID}
-	// and then load it by url preliminarly protected it by spring security
-	// from other users
-	
-	
 	@GetMapping("/profile/{userID}")
 	public String profile() {
         return "profile";

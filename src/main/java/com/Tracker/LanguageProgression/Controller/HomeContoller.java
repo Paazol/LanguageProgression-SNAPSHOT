@@ -37,9 +37,9 @@ public class HomeContoller {
 			User user = userDetails.loadUserById(id);
 			String levelOfEnglish = userDetails.getLevelOfEnglish();
 			System.out.println(postsService.getAllPosts());
+			
 			model.addAttribute("posts", postsService.getAllPosts());
 			model.addAttribute("user", user);
-			
 			
 			session.setAttribute("levelOfEnglish", levelOfEnglish);
 			session.setAttribute("id", id);

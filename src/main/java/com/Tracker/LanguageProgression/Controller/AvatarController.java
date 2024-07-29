@@ -26,7 +26,7 @@ public class AvatarController {
         Optional<User> user = userRepository.findById(userID);
         if (user.isPresent() && user.get().getProfilePicture() != null) {
             return ResponseEntity.ok()
-                    .contentType(MediaType.IMAGE_JPEG) // AdjustMediaType.IMAGE_PNG, etc. based on your image type
+                    .contentType(MediaType.IMAGE_JPEG)
                     .body(user.get().getProfilePicture());
         } else {
             return ResponseEntity.notFound().build();

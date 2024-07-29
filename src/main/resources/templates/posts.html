@@ -8,12 +8,18 @@
 </head>
 <body>
     <div class="background"></div> 
-
-    <div class="postDIV">
-            <div class="postBackground"></div> 
-            <div class="postCardDIV"></div>
+    
+    <div th:each="post : ${posts}">
+        <div class="postDIV">
+            <div class="postBackground"></div>
+            <div class="postCardDIV">
+                <img class="userAvatar" th:src="${'/profile/' + session.id + '/image/userAvatar'}" alt="Ohh, no image">
+                <p class="titlePARAGRAPH" th:text="${post.title}"></p>
+                <small class="suggestedLevelOfEnglishSMALL" th:utext="'Suggested levels: <br>' + ${post.suggestedLevelOfEnglish}"></small>
+                <p class="containmentPARAGRAPH" th:text="${post.containment}"></p>
+            </div>
+        </div>
     </div>
-
 
     <div class="dropdown">
         <div class="menuDIV">

@@ -156,7 +156,6 @@
     height: 206px;
     background-color: #903737;
     border-radius: 30px;
-    
     filter: opacity(0.8) brightness(0.9);
 }
 
@@ -178,7 +177,7 @@
     position: relative;
     font-size: 20px;
     text-align: center;
-    bottom: 95px;
+    bottom: 58px;
     max-width: 100%;
 }
 
@@ -188,7 +187,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
     left: 180px;
-    bottom: 110px;
+    bottom: 73px;
     width: 1160px;
     height: 80px;
     line-height: 20px;
@@ -200,7 +199,7 @@
 
 .suggestedLevelOfEnglishSMALL {
     position: relative;
-    bottom: 140px;
+    bottom: 103px;
     left: 1180px;
     width: 180px;
 }
@@ -208,7 +207,15 @@
 .authorOfAPost {
     position: relative;
     text-align: left;
-    top: 115px;
-    left: 7px;
+    top: 145px;
+    left: 17px;
     width: 170px;
+}
+
+.userAvatar {
+    position: absolute;
+    width: 150px;
+    left: 8px;
+    top: 10px;
+    border-radius: 25px;
 }

@@ -69,13 +69,13 @@ public class AuthenticationService {
 	public User saveProfilePicture(@RequestParam("profilePicture") MultipartFile profilePicture, HttpSession session) throws IOException {
 		
 		// resizing
-        int targetWidth = 250;
-        int targetHeight = 250;
+        int targetWidth = 230;
+        int targetHeight = 230;
         
         //from multipartfile to the bufferedimage
         BufferedImage originalImage = ImageIO.read(new ByteArrayInputStream(profilePicture.getBytes()));
         //resizing an image
-        BufferedImage resizedImage = Scalr.resize(originalImage, Scalr.Method.AUTOMATIC, Scalr.Mode.FIT_EXACT, targetWidth, targetHeight);
+        BufferedImage resizedImage = Scalr.resize(originalImage, Scalr.Method.ULTRA_QUALITY, Scalr.Mode.FIT_EXACT, targetWidth, targetHeight);
 		
         
         // converting BufferedImage back to byte array

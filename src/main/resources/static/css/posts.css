@@ -10,32 +10,51 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: black;
+    background-color: #161616;
     background-image: url(/images/mainPage_Background.jpg);
     background-size: cover;
     filter: brightness(0.7);
     z-index: -1;
 }
 
-body {
-    height: 100%;
-    margin: 0px;
-    display: grid;
-    place-items: center;
-}
-
-
-/* This button is opening navigation menu */
-.menuDIV {   
+.menuDIV {
     position: absolute;
     align-items: center;
-    right: 25px;
-    bottom: 500px;
+    right: 0;
+    bottom: 170%;
     border-radius: 15px;
 }
 
 .menuIMG {
     width: 50px;
+}
+
+.menuBUTTON {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: -70px;
+    right: -90px;
+    font-size: 24px;
+    color: #ffffff;
+    border: none;
+    padding: 5px;
+    padding-left: 2px;
+    border-radius: 15px;
+    background: linear-gradient(45deg, #332f2f, #161616);
+    transition: 0.15s;
+}
+
+.menuBUTTON:hover {
+    border-bottom: 3px solid #ff6464;  
+}
+
+.menuIMG{
+    color: #ff6464;
+}
+
+.dropdownMenuItems:hover {
+    color: #ff6464;
 }
 
 .menuBUTTON {
@@ -119,33 +138,74 @@ body {
 }
 
 .postDIV {
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 30%;
-    width: 1500px;
-    height: 200px;
+    position: relative;
+    display: table;
+    width: 1400px;
+    margin: 15px;
+    right: 120px;
+    height: 150px;
+    left: 0px;
 }
 
 .postBackground {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: #903737;
-    border-radius: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 1400px;
+    height: 206px;
+    background-color: #903737;
+    border-radius: 30px;
     filter: opacity(0.8) brightness(0.9);
 }
 
 .postCardDIV {
     position: relative;
-    width: 99%;
-    height: 95%;
-    border-radius: 30px;
-    background-color: #0e0707;
     display: grid;
-    place-items: center;
+    color: #e9e9e9;
+    background-color: #0e0707;
+    width: 99%;
+    height: 200px;
+    top: 3px;
+    left: 7px;
+    border-radius: 30px;
+}
+
+.titlePARAGRAPH {
+    position: relative;
+    font-size: 20px;
+    text-align: center;
+    top: 5px;
+    max-width: 100%;
+}
+
+.containmentPARAGRAPH {
+    position: relative;
+    overflow-wrap: anywhere;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    left: 180px;
+    bottom: 10px;
+    width: 1160px;
+    height: 80px;
+    line-height: 20px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+}
+
+.suggestedLevelOfEnglishSMALL {
+    position: relative;
+    bottom: 40px;
+    left: 1180px;
+    width: 180px;
+}
+
+.userAvatar {
+    position: absolute;
+    width: 150px;
+    left: 8px;
+    top: 10px;
+    border-radius: 25px;
 }

@@ -160,7 +160,6 @@ body {
     cursor: pointer;
     width: 150px;
     height: 50px;
-    top: 5px;
     color: #e9e9e9;
     background-color: #903737;
     border-color: transparent;
@@ -243,6 +242,7 @@ body {
     position: relative;
     cursor: pointer;
     left: 197px;
+    bottom: 60px;
     border-bottom: 2px solid transparent;
 }
 
@@ -258,8 +258,9 @@ body {
 
 .levelOfEnglish {
     position: relative;
-    top: 200px;
     left: 215px;
+    top: 50px;
+
     color: rgb(255, 255, 255);
 }
 
@@ -291,6 +292,7 @@ body {
 
 .userAvatar {
     position: relative;
-    bottom: px;
-    right: 168px;
+    bottom: 15px;
+    right: 155px;
+    border-radius: 25px;
 }
