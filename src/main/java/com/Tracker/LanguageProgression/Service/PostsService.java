@@ -1,12 +1,17 @@
 package com.Tracker.LanguageProgression.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.Tracker.LanguageProgression.Entity.Posts;
+import com.Tracker.LanguageProgression.Entity.User;
 import com.Tracker.LanguageProgression.Repository.PostsRepository;
+import com.Tracker.LanguageProgression.Repository.UserRepository;
 
 import lombok.AllArgsConstructor;
 
@@ -15,10 +20,10 @@ import lombok.AllArgsConstructor;
 public class PostsService {
 	
 	private PostsRepository postsRepository;
+	private UserRepository userRepository;
 	
 	public void createPost(@PathVariable("userID") Long userID, Posts posts) {
 		posts.setId(null);
-		
 		posts.setTitle(posts.getTitle());
 		posts.setContainment(posts.getContainment());
 		posts.setSuggestedLevelOfEnglish(posts.getSuggestedLevelOfEnglish());
@@ -31,7 +36,25 @@ public class PostsService {
 	}
 	
 	public List<Posts> getAllAuthorPosts(Long id) {
-		
 		return postsRepository.findByIdOfAnAuthor(id);
+	}
+	
+	public List<Map<String, Object>> getAllPostsWithAuthorAvatar() {
+		List<Posts> posts = postsRepository.findAll();
+		List<Map<String, Object>> postsWithAvatar = new ArrayList<>();
+		
+		for (Posts post : posts) {
+			Long authorId = post.getIdOfAnAuthor();
+			User author = userRepository.findById(authorId).orElse(null);
+			if (author != null) {
+				Map<String, Object> postWithAvatar = new HashMap<>();
+				postWithAvatar.put("post", post);
+				postWithAvatar.put("avatarPicture", author.getProfilePicture());
+				postWithAvatar.put("username", author.getUsername());
+				postsWithAvatar.add(postWithAvatar);
+			}
+		}
+		
+		return postsWithAvatar;
 	}
 }

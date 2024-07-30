@@ -15,6 +15,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -41,6 +42,8 @@ public class User implements UserDetails {
 	private String levelOfEnglish;
 	private Integer followers;
 	
+	@OneToMany(mappedBy = "user")
+	private List<Token> tokens;
 
 	@Enumerated(EnumType.STRING)
 	private Role role;
