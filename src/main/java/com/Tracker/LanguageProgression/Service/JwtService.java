@@ -22,7 +22,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class JwtService {
-	
+
 	private final TokenRepository tokenRepository;
 
 	@Value("${application.security.jwt.secret-key}")
@@ -33,7 +33,7 @@ public class JwtService {
 
     @Value("${application.security.jwt.refresh-token-expiration}")
     private long refreshTokenExpire;
-    
+
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);

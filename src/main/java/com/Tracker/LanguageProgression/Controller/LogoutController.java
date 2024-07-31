@@ -12,9 +12,9 @@ import lombok.AllArgsConstructor;
 @Controller
 @AllArgsConstructor
 public class LogoutController {
-	
+
 	TokenBlacklistService tokenBlacklistService;
-	
+
 	@PostMapping("/logout")
     public ResponseEntity<String> logout(@RequestHeader("Authorization") String bearerToken) {
         String token = bearerToken.substring(7);

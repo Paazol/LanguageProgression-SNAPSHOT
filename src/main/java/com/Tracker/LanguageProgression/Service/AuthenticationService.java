@@ -64,27 +64,24 @@ public class AuthenticationService {
 		return new AuthenticationResponse(accessToken, refreshToken, "User registration was successful");
 
 	}
-	
-	
+
 	public User saveProfilePicture(@RequestParam("profilePicture") MultipartFile profilePicture, HttpSession session) throws IOException {
-		
+
 		// resizing
         int targetWidth = 230;
         int targetHeight = 230;
-        
+
         //from multipartfile to the bufferedimage
         BufferedImage originalImage = ImageIO.read(new ByteArrayInputStream(profilePicture.getBytes()));
         //resizing an image
         BufferedImage resizedImage = Scalr.resize(originalImage, Scalr.Method.ULTRA_QUALITY, Scalr.Mode.FIT_EXACT, targetWidth, targetHeight);
-		
-        
+
+
         // converting BufferedImage back to byte array
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ImageIO.write(resizedImage, "jpg", baos);
         byte[] resizedImageBytes = baos.toByteArray();
 
-        
-        
         // save everything
         Long userID = (Long) session.getAttribute("id");
         User user = userRepository.findById(userID).orElseThrow(() -> new RuntimeException("User not found"));
@@ -92,7 +89,7 @@ public class AuthenticationService {
         baos.close();
         return userRepository.save(user);
     }
-	
+
 	public AuthenticationResponse login(User request) {
 		authenticationManager
 				.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
@@ -136,7 +133,7 @@ public class AuthenticationService {
 		String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
 
 		if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-			return new ResponseEntity<AuthenticationResponse>(HttpStatus.UNAUTHORIZED);
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
 
 		String token = authHeader.substring(7);
@@ -156,11 +153,11 @@ public class AuthenticationService {
 			revokeAllTokenByUser(user);
 			saveUserToken(accessToken, refreshToken, user);
 
-			return new ResponseEntity<AuthenticationResponse>(
+			return new ResponseEntity<>(
 					new AuthenticationResponse(accessToken, refreshToken, "New token generated"), HttpStatus.OK);
 		}
 
-		return new ResponseEntity<AuthenticationResponse>(HttpStatus.UNAUTHORIZED);
+		return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 
 	}
 }

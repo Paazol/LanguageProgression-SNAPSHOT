@@ -27,16 +27,18 @@ public class SecurityConfiguration {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
-        
+
         .sessionManagement(sessionManagement -> sessionManagement.sessionFixation().migrateSession()
                 .maximumSessions(1)
                 .maxSessionsPreventsLogin(true))
-        
+
         .authorizeHttpRequests((requests) -> requests
-				.requestMatchers("*/profile/**").hasRole("USER")
+				.requestMatchers("/profile/**")
+
+				.hasRole("USER")
 				.anyRequest().permitAll()
         )
-        
+
         .formLogin(formLogin -> formLogin
         		.loginPage("/login")
         		.defaultSuccessUrl("/home").permitAll())

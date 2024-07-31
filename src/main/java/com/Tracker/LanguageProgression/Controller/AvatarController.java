@@ -16,13 +16,13 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class AvatarController {
-	
+
 	@Autowired
 	UserRepository userRepository;
-	
+
 	@GetMapping("/profile/{userID}/image/userAvatar")
     public ResponseEntity<byte[]> getProfilePicture(@PathVariable Long userID, HttpSession session) {
-    	
+
         Optional<User> user = userRepository.findById(userID);
         if (user.isPresent() && user.get().getProfilePicture() != null) {
             return ResponseEntity.ok()
@@ -30,6 +30,6 @@ public class AvatarController {
                     .body(user.get().getProfilePicture());
         } else {
             return ResponseEntity.notFound().build();
-        }      
+        }
     }
 }

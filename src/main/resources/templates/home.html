@@ -9,15 +9,15 @@
 <body>
     <div class="background"></div> 
 
-    <div th:each="postWithAvatar : ${postsWithAvatar}">
+    <div th:each="avatarByID : ${avatarByID}">
         <div class="postDIV">
             <div class="postBackground"></div>
             <div class="postCardDIV">
-                <img class="userAvatar" th:src="'/profile/' + ${postWithAvatar.post.idOfAnAuthor} + '/image/userAvatar'" alt="Ohh, no image">
-                <h5 class="authorOfAPost" th:text="'by ' + ${postWithAvatar.username}"></h5>
-                <p class="titlePARAGRAPH" th:text="${postWithAvatar.post.title}"></p>
-                <small class="suggestedLevelOfEnglishSMALL" th:utext="'Suggested levels: <br>' + ${postWithAvatar.post.suggestedLevelOfEnglish}"></small>
-                <p class="containmentPARAGRAPH" th:text="${postWithAvatar.post.containment}"></p>
+                <img class="userAvatar" th:src="'/profile/' + ${avatarByID.post.idOfAnAuthor} + '/image/userAvatar'" alt="Ohh, no image">
+                <a th:href="'/profile/' + ${avatarByID.username}"><h5 class="authorOfAPost" th:text="'by ' + ${avatarByID.username}"></h5></a>
+                <p class="titlePARAGRAPH" th:text="${avatarByID.post.title}"></p>
+                <small class="suggestedLevelOfEnglishSMALL" th:utext="'Suggested levels: <br>' + ${avatarByID.post.suggestedLevelOfEnglish}"></small>
+                <p class="containmentPARAGRAPH" th:text="${avatarByID.post.containment}"></p>
             </div>
         </div>
     </div>

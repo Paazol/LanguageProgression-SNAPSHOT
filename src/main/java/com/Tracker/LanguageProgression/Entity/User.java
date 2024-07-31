@@ -32,7 +32,7 @@ public class User implements UserDetails {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
 	@Column(name = "id")
 	private Long id;
-	
+
 	@Lob
 	private byte[] profilePicture;
 
@@ -41,7 +41,7 @@ public class User implements UserDetails {
 	private String email;
 	private String levelOfEnglish;
 	private Integer followers;
-	
+
 	@OneToMany(mappedBy = "user")
 	private List<Token> tokens;
 

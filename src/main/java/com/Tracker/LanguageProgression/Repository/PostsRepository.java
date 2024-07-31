@@ -9,6 +9,6 @@ import com.Tracker.LanguageProgression.Entity.Posts;
 
 @Repository
 public interface PostsRepository extends JpaRepository<Posts, Long> {
-	
+
 	List<Posts> findByIdOfAnAuthor(Long id);
 }

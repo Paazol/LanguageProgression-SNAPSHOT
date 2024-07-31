@@ -20,17 +20,17 @@ public class PostsCreationController {
 
     @Autowired
     private PostsService postsService;
-    
+
     @PostMapping("/create")
     public ResponseEntity<Posts> createPost(@ModelAttribute Posts posts, HttpSession session) {
     	posts.setId(null);
-    	
+
         HttpHeaders headers = new HttpHeaders();
         Long id = (Long) session.getAttribute("id");
-        
+
         postsService.createPost(id, posts);
         headers.add("Location", "/profile/" + id + "/posts");
-        
+
         return ResponseEntity.status(HttpStatus.FOUND).headers(headers).body(posts);
     }
 }

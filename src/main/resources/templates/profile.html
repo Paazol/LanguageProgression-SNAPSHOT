@@ -13,13 +13,11 @@
     <div class="profileDIV">
         <div class="profileBackground"></div>
 
-        <!-- @TODO make user being able to set their avatars and make it look fine-->
-        <div class="profileCardDIV">
             <form th:action="${'/profile/' + session.id + '/upload'}" method="post" enctype="multipart/form-data">
                 <button class="profilePictureBUTTON" type="submit">Upload avatar</button>
                 <input id="profilePictureINPUT" name="profilePicture" type="file" draggable="true">
             </form>
-            <img class="userAvatar" th:src="${'/profile/' + session.id + '/image/userAvatar'}" alt="Ohh, no image">
+            <img class="userAvatar" th:src="${avatarByID}">
             <span class="levelOfEnglishSPAN">
                 <p class="levelOfEnglish">
                     Level: <span th:text="${session.levelOfEnglish}"></span>

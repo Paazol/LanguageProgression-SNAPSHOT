@@ -18,10 +18,10 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class PostsService {
-	
+
 	private PostsRepository postsRepository;
 	private UserRepository userRepository;
-	
+
 	public void createPost(@PathVariable("userID") Long userID, Posts posts) {
 		posts.setId(null);
 		posts.setTitle(posts.getTitle());
@@ -30,31 +30,31 @@ public class PostsService {
 		posts.setIdOfAnAuthor(userID);
 		postsRepository.save(posts);
 	}
-	
+
 	public List<Posts> getAllPosts() {
 		return postsRepository.findAll();
 	}
-	
+
 	public List<Posts> getAllAuthorPosts(Long id) {
 		return postsRepository.findByIdOfAnAuthor(id);
 	}
-	
+
 	public List<Map<String, Object>> getAllPostsWithAuthorAvatar() {
 		List<Posts> posts = postsRepository.findAll();
-		List<Map<String, Object>> postsWithAvatar = new ArrayList<>();
-		
+		List<Map<String, Object>> avatarsByID = new ArrayList<>();
+
 		for (Posts post : posts) {
 			Long authorId = post.getIdOfAnAuthor();
 			User author = userRepository.findById(authorId).orElse(null);
 			if (author != null) {
-				Map<String, Object> postWithAvatar = new HashMap<>();
-				postWithAvatar.put("post", post);
-				postWithAvatar.put("avatarPicture", author.getProfilePicture());
-				postWithAvatar.put("username", author.getUsername());
-				postsWithAvatar.add(postWithAvatar);
+				Map<String, Object> avatarByID = new HashMap<>();
+				avatarByID.put("post", post);
+				avatarByID.put("avatarPicture", author.getProfilePicture());
+				avatarByID.put("username", author.getUsername());
+				avatarsByID.add(avatarByID);
 			}
 		}
-		
-		return postsWithAvatar;
+
+		return avatarsByID;
 	}
 }

@@ -8,14 +8,14 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class TokenBlacklistService {
-	
-	private StringRedisTemplate redisTemplate;
-	
-	 public void addToBlacklist(String token) {
-	        redisTemplate.opsForValue().set(token, "blacklisted");
-	    }
 
-	    public boolean isBlacklisted(String token) {
-	        return redisTemplate.hasKey(token);
-	    }
+	private StringRedisTemplate redisTemplate;
+
+	public void addToBlacklist(String token) {
+	    redisTemplate.opsForValue().set(token, "blacklisted");
+	}
+
+    public boolean isBlacklisted(String token) {
+        return redisTemplate.hasKey(token);
+    }
 }

@@ -61,10 +61,10 @@ body {
 
 /* Connected with .menuBUTTON this part is controlling dropdown menu */
 .dropdownMenuDIV {
-    position: absolute;
+    position: fixed;
     display: none; 
     padding: 10px 5px;
-    right: 30px;
+    right: 20px;
     top: 100px;
     background: linear-gradient(45deg, #332f2f, #161616);
     border-radius: 15px;

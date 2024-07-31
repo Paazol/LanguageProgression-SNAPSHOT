@@ -24,14 +24,14 @@ public class AvatarCreationController {
 
 	UserRepository userRepository;
 	AuthenticationService authenticationService;
-	
+
     @PostMapping("/profile/{userID}/upload")
     public ResponseEntity<User> createPost(@PathVariable Long userID,@RequestParam("profilePicture") MultipartFile profilePicture, HttpSession session) throws IOException {
     	HttpHeaders headers = new HttpHeaders();
-		
+
 		User image = authenticationService.saveProfilePicture(profilePicture, session);
         headers.add("Location", "/profile/" + userID);
-        
+
         return ResponseEntity.status(HttpStatus.FOUND).headers(headers).body(image);
     }
 }
