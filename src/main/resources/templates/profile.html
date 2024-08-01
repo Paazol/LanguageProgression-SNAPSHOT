@@ -12,7 +12,7 @@
 
     <div class="profileDIV">
         <div class="profileBackground"></div>
-
+        <div class="profileCardDIV">
             <form th:action="${'/profile/' + session.id + '/upload'}" method="post" enctype="multipart/form-data">
                 <button class="profilePictureBUTTON" type="submit">Upload avatar</button>
                 <input id="profilePictureINPUT" name="profilePicture" type="file" draggable="true">
@@ -26,7 +26,7 @@
             <span class="viewPostsSPAN"><a class="viewPosts" th:href="${'/profile/' + session.id + '/posts'}">View posts</a></span>
             <button class="followBUTTON">Follow</button>     
         </div>
-    
+        
     </div>
 
     <div class="dropdown">

@@ -142,11 +142,11 @@ body {
 
 .profileCardDIV {
     position: relative;
+    display: grid;
     width: 575px;
     height: 475px;
     border-radius: 30px;
     background-color: #0e0707;
-    display: grid;
     place-items: center;
 }
 
@@ -260,7 +260,6 @@ body {
     position: relative;
     left: 215px;
     top: 50px;
-
     color: rgb(255, 255, 255);
 }
 
@@ -295,4 +294,6 @@ body {
     bottom: 15px;
     right: 155px;
     border-radius: 25px;
+    height: 230px;
+    width: 230px;
 }

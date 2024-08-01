@@ -18,22 +18,23 @@ import lombok.AllArgsConstructor;
 public class ProfileController {
 
 	private UserRepository userRepository;
-	
+
 	@GetMapping("/profile/{userID}")
 	public String profile(@PathVariable Long userID, Model model) {
-		
+
 		Optional<User> idOfAUser = userRepository.findById(userID);
-		
-		 if (idOfAUser.isPresent()) {
-		        byte[] profilePictureBytes = idOfAUser.get().getProfilePicture();
 
-				String base64Image = Base64.getEncoder().encodeToString(profilePictureBytes);
-				model.addAttribute("avatarByID", "data:image/jpeg;base64," + base64Image);
+		if (idOfAUser.isPresent() && idOfAUser.get().getProfilePicture() != null) {
+			byte[] profilePictureBytes = idOfAUser.get().getProfilePicture();
+			String base64Image = Base64.getEncoder().encodeToString(profilePictureBytes);
+			model.addAttribute("avatarByID", "data:image/jpeg;base64," + base64Image);
 
-	    } else {
-	        System.out.println("User not found for ID: " + userID);
-	    }
+		} else {
+			String avatarPath = "/images/default_profile_picture.png";
+			model.addAttribute("avatarByID", avatarPath);
+			System.out.println("Avatar path set to: " + avatarPath);
+		}
 		System.out.println("Avatar URL: " + model.getAttribute("avatarByID"));
-        return "profile";
+		return "profile";
 	}
 }

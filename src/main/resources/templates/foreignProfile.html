@@ -1,22 +1,31 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8"/>
     <title>Profile</title>
-    <link rel='stylesheet' type='text/css' href='/css/profile.css'>
-    <script src="/js/profile.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/profile.css">
     <script src="/js/dropDownBUTTON.js"></script>
+    <script src = "/js/following.js"></script>
 </head>
 <body>
     <div class="background"></div> 
 
     <div class="profileDIV">
-            <div class="profileBackground"></div>
-
-            <div class="profileCardDIV">
-                <img class="userAvatar">
-                <span class="viewPostsSPAN"><a class="viewPosts">View posts</a></span>
-                <button class="followBUTTON">Follow</button>     
-            </div>
+        <div class="profileBackground"></div>
+            <form th:action="${'/profile/' + session.id + '/upload'}" method="post" enctype="multipart/form-data">
+                <button class="profilePictureBUTTON" type="submit">Upload avatar</button>
+                <input id="profilePictureINPUT" name="profilePicture" type="file" draggable="true">
+            </form>
+            <img class="userAvatar" th:src="${avatarByID}">
+            <span class="levelOfEnglishSPAN">
+                <p class="levelOfEnglish">
+                    Level: <span th:text="${session.levelOfEnglish}"></span>
+                </p>
+            </span> 
+            <span class="viewPostsSPAN"><a class="viewPosts" th:href="${'/profile/' + session.id + '/posts'}">View posts</a></span>
+            <button class="followBUTTON">Follow</button>     
+        </div>
+    
     </div>
 
     <div class="dropdown">
@@ -26,7 +35,8 @@
         </div>
         <div class="dropdownMenuDIV">
             <a class="dropdownMenuItems" href="/home">Home</a>
-            <a class="dropdownMenuItems" href="#">Settings</a>
+            <a class="dropdownMenuItems" href="/settings">Settings</a>
+            <a class="dropdownMenuItems" href="/logout">Logout</a>
         </div>
     </div>
 </body>
