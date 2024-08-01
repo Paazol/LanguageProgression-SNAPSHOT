@@ -17,7 +17,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class ProfileController {
 
-	private UserRepository userRepository;
+	private final UserRepository userRepository;
 
 	@GetMapping("/profile/{userID}")
 	public String profile(@PathVariable Long userID, Model model) {
@@ -32,9 +32,7 @@ public class ProfileController {
 		} else {
 			String avatarPath = "/images/default_profile_picture.png";
 			model.addAttribute("avatarByID", avatarPath);
-			System.out.println("Avatar path set to: " + avatarPath);
 		}
-		System.out.println("Avatar URL: " + model.getAttribute("avatarByID"));
 		return "profile";
 	}
 }

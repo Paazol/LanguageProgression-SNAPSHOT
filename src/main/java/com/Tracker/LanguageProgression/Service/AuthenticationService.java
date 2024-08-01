@@ -76,7 +76,6 @@ public class AuthenticationService {
         //resizing an image
         BufferedImage resizedImage = Scalr.resize(originalImage, Scalr.Method.ULTRA_QUALITY, Scalr.Mode.FIT_EXACT, targetWidth, targetHeight);
 
-
         // converting BufferedImage back to byte array
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ImageIO.write(resizedImage, "jpg", baos);

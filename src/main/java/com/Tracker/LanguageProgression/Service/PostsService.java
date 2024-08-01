@@ -19,8 +19,8 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class PostsService {
 
-	private PostsRepository postsRepository;
-	private UserRepository userRepository;
+	private final PostsRepository postsRepository;
+	private final UserRepository userRepository;
 
 	public void createPost(@PathVariable("userID") Long userID, Posts posts) {
 		posts.setId(null);

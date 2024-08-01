@@ -13,11 +13,14 @@
         <div class="postDIV">
             <div class="postBackground"></div>
             <div class="postCardDIV">
-                <img class="userAvatar" th:src="'/profile/' + ${avatarByID.post.idOfAnAuthor} + '/image/userAvatar'" alt="Ohh, no image">
-                <a th:href="'/profile/' + ${avatarByID.username}"><h5 class="authorOfAPost" th:text="'by ' + ${avatarByID.username}"></h5></a>
-                <p class="titlePARAGRAPH" th:text="${avatarByID.post.title}"></p>
-                <small class="suggestedLevelOfEnglishSMALL" th:utext="'Suggested levels: <br>' + ${avatarByID.post.suggestedLevelOfEnglish}"></small>
-                <p class="containmentPARAGRAPH" th:text="${avatarByID.post.containment}"></p>
+                
+                <a class="authorOfAPost" th:href="'/profile/' + ${avatarByID.username}">
+                    <img class="userAvatar" th:src="'/profile/' + ${avatarByID.post.idOfAnAuthor} + '/image/userAvatar'" alt="Ohh, no image">
+                    <h5 th:text="'by ' + ${avatarByID.username}"></h5></a>
+                <a class="title" href="/profile/1" th:text="${avatarByID.post.title}"></a>
+                <small class="suggestedLevelOfEnglish" th:utext="'Suggested levels: <br>' + ${avatarByID.post.suggestedLevelOfEnglish}" aria-required="true"></small>
+                <p class="containment" th:text="${avatarByID.post.containment}"></p>
+                <button class="continueReading">Continue</button>
             </div>
         </div>
     </div>
