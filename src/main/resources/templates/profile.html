@@ -3,13 +3,15 @@
 <head>
     <meta charset="utf-8"/>
     <title>Profile</title>
+    <link rel="stylesheet" type="text/css" href="/css/generic.css">
     <link rel="stylesheet" type="text/css" href="/css/profile.css">
     <script src="/js/dropDownBUTTON.js"></script>
     <script src = "/js/following.js"></script>
 </head>
 <body>
-    <div class="background"></div> 
+    <div th:insert="~{Generic/dropdownMenu::dropdown}"></div>
 
+    <div class="background"></div> 
     <div class="profileDIV">
         <div class="profileBackground"></div>
         <div class="profileCardDIV">
@@ -27,18 +29,6 @@
             <button class="followBUTTON">Follow</button>     
         </div>
         
-    </div>
-
-    <div class="dropdown">
-        <div class="menuDIV">
-            <button class="menuBUTTON">
-            <img class="menuIMG" src="/images/menu.png">Menu
-        </div>
-        <div class="dropdownMenuDIV">
-            <a class="dropdownMenuItems" href="/home">Home</a>
-            <a class="dropdownMenuItems" href="/settings">Settings</a>
-            <a class="dropdownMenuItems" href="/logout">Logout</a>
-        </div>
     </div>
 </body>
 </html>

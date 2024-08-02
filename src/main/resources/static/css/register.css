@@ -25,8 +25,6 @@ body {
 	background-color: black;
 }
 
-
-
 .background {
     position: fixed;
     top: 0;
@@ -40,8 +38,6 @@ body {
 	z-index: -1;
 }
 
-
-
 .wrapper {
 	font-family: "Martian Mono", monospace;
 	width: 450px;
@@ -52,14 +48,11 @@ body {
 	backdrop-filter: blur(50px);
 }
 
-
-
 #registerMainHeader {
 	text-align: center;
 	margin: 35px;
 	color: rgb(255, 255, 255);
 }
-
 
 .Input {
 	position: relative;
@@ -91,6 +84,7 @@ body {
 	border: none;
 	outline: none;
 }
+
 #repeatPasswordLabel {
 	transition: color 0.3s ease;
 }
@@ -111,8 +105,6 @@ body {
 	top: -5px;
 }
 
-
-
 #registerLinkDIV {
 	position: relative;
 	left: 10%;
@@ -128,16 +120,12 @@ body {
 	text-decoration: none;
 }
 
-
-
 .loginICONS {
 	position: absolute;
 	width: 30px;
     height: 30px;
 	right: 1%;
 }
-
-
 
 #languageLevelOptions {
     position: absolute;
@@ -150,7 +138,6 @@ body {
 	outline: none;
     background-color: rgb(41, 41, 41);
     color: white;
-
 }
 
 .chooseOfALanguageLevelLABEL {
@@ -159,8 +146,6 @@ body {
     left: 8%;
     top: 70%;
 }
-
-
 
 #registerButtonDIV {
 	display: flex;

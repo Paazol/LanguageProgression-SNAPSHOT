@@ -3,17 +3,18 @@
 <head>
     <meta charset="utf-8">
     <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="/css/generic.css">
     <link rel="stylesheet" type="text/css" href="/css/home.css">
     <script src="/js/dropDownBUTTON.js"></script>
 </head>
 <body>
-    <div class="background"></div> 
+    <div th:insert="~{Generic/dropdownMenu::dropdown}"></div>
 
+    <div class="background"></div> 
     <div th:each="avatarByID : ${avatarByID}">
         <div class="postDIV">
             <div class="postBackground"></div>
             <div class="postCardDIV">
-                
                 <a class="authorOfAPost" th:href="'/profile/' + ${avatarByID.username}">
                     <img class="userAvatar" th:src="'/profile/' + ${avatarByID.post.idOfAnAuthor} + '/image/userAvatar'" alt="Ohh, no image">
                     <h5 th:text="'by ' + ${avatarByID.username}"></h5></a>
@@ -22,17 +23,6 @@
                 <p class="containment" th:text="${avatarByID.post.containment}"></p>
                 <button class="continueReading">Continue</button>
             </div>
-        </div>
-    </div>
-    <div class="dropdown">
-        <div class="menuDIV">
-            <button class="menuBUTTON">
-            <img class="menuIMG" src="/images/menu.png">Menu
-        </div>
-        <div class="dropdownMenuDIV">
-            <a class="dropdownMenuItems" th:href="'/profile/' + ${session.id}" th:if="${session.id != null}">Profile</a>
-            <a class="dropdownMenuItems" href="/login" th:if="${session.id == null}">Login</a>
-            <a class="dropdownMenuItems" href="#">Settings</a>
         </div>
     </div>
 </body>

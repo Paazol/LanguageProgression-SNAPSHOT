@@ -3,12 +3,14 @@
 <head>
     <meta charset="utf-8"/>
     <title>Posts</title>
+    <link rel="stylesheet" type="text/css" href="/css/generic.css">
     <link rel="stylesheet" type="text/css" href="/css/posts.css">
     <script src="/js/dropDownBUTTON.js"></script>
 </head>
 <body>
+    <div th:insert="~{Generic/dropdownMenu::dropdown}"></div>
+
     <div class="background"></div> 
-    
     <div th:each="post : ${posts}">
         <div class="postDIV">
             <div class="postBackground"></div>
@@ -18,18 +20,6 @@
                 <small class="suggestedLevelOfEnglishSMALL" th:utext="'Suggested levels: <br>' + ${post.suggestedLevelOfEnglish}"></small>
                 <p class="containmentPARAGRAPH" th:text="${post.containment}"></p>
             </div>
-        </div>
-    </div>
-
-    <div class="dropdown">
-        <div class="menuDIV">
-            <button class="menuBUTTON">
-            <img class="menuIMG" src="/images/menu.png">Menu
-        </div>
-        <div class="dropdownMenuDIV">
-            <a class="dropdownMenuItems" href="/home">Home</a>
-            <a class="dropdownMenuItems" th:href="'/profile/' + ${session.id}" th:if="${session.id != null}">Profile</a>
-            <a class="dropdownMenuItems" href="/settings">Settings</a>
         </div>
     </div>
 </body>
