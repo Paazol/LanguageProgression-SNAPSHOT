@@ -17,6 +17,13 @@
 	z-index: -1;
 }
 
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 95vh;
+}
+
 .colorable:hover {
 	animation: animate 3s infinite;	
   }
@@ -33,15 +40,7 @@
     }
   }
 
-body {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	min-height: 95vh;
-}
-
-.wrapper {
-	
+.wrapper {	
 	width: 450px;
 	height: 480px;
 	border: 2px solid rgb(255, 255, 255);
@@ -50,13 +49,11 @@ body {
 	backdrop-filter: blur(50px);
 }
 
-
 #loginMainHeader {
 	text-align: center;
 	margin: 35px;
 	color: rgb(255, 255, 255);
 }
-
 
 #loginButton {
 	position: absolute;
@@ -77,12 +74,10 @@ body {
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
-
 #loginButtonDIV {
 	display: flex;
 	justify-content: center;
 }
-
 
 .Input {
 	position: relative;
