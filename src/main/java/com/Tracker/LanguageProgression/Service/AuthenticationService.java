@@ -128,7 +128,7 @@ public class AuthenticationService {
 
 	public ResponseEntity<AuthenticationResponse> refreshToken(HttpServletRequest request,
 			HttpServletResponse response) {
-		// extract the token from authorization header
+		// extract token from the authorization header
 		String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
 
 		if (authHeader == null || !authHeader.startsWith("Bearer ")) {
@@ -137,13 +137,13 @@ public class AuthenticationService {
 
 		String token = authHeader.substring(7);
 
-		// extract username from token
+		// extract username from the token
 		String username = jwtService.extractUsername(token);
 
-		// check if the user exist in database
+		// check if user exist in the database
 		User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("No user found"));
 
-		// check if the token is valid
+		// check if token is valid
 		if (jwtService.isValidRefreshToken(token, user)) {
 			// generate access token
 			String accessToken = jwtService.generateAccessToken(user);

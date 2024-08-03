@@ -1,12 +1,28 @@
-<div th:fragment="dropdown">
+<div th:fragment="dropdown(profile, login, home, posts, logout)">
     <div class="menuDIV">
         <button class="menuBUTTON">
         <img class="menuIMG" src="/images/menu.png">Menu
     </div>
     <div class="dropdownMenuDIV">
-        <a class="dropdownMenuItems" th:href="'/profile/' + ${session.id}" th:if="${session.id != null}">Profile</a>
-        <a class="dropdownMenuItems" href="/login" th:if="${session.id == null}">Login</a>
-        <a class="dropdownMenuItems" href="/home">Home</a>
-        <a class="dropdownMenuItems" href="/logout">Logout</a>
+
+        <th:block th:if="${profile}">
+            <a class="dropdownMenuItems" th:href="'/profile/' + ${session.id}" th:if="${session.id != null}">Profile</a>
+        </th:block>
+                
+        <th:block th:if="${login}">
+            <a class="dropdownMenuItems" href="/login" th:if="${session.id == null}">Login</a>
+        </th:block>
+                
+        <th:block th:if="${home}">
+            <a class="dropdownMenuItems" href="/home">Home</a>
+        </th:block>
+
+        <th:block th:if="${posts}">
+            <a class="dropdownMenuItems" th:href="'/profile/' + ${session.id} + '/posts'">Posts</a>
+        </th:block>
+                
+        <th:block th:if="${logout}">
+            <a class="dropdownMenuItems" href="/logout">Logout</a>
+        </th:block>
     </div>
 </div>

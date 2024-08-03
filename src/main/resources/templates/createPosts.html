@@ -9,16 +9,15 @@
     <script src="/js/displayLevelsButton.js"></script>
 </head>
 <body>
-
-
-    <div th:insert="~{Generic/dropdownMenu::dropdown}"></div>
+    <!-- (profile, login, home, logout) -->
+    <div th:insert="~{Generic/dropdownMenu::dropdown(true, true, true, true, true)}"></div>
 
     <div class="background"></div> 
-    <form th:action="${'/profile/' + session.id + '/posts/create'}" method="post">
+<form id="postForm" th:action="${'/profile/' + session.id + '/posts/create'}" method="post">
     <div class="postDIV">
         <div class="postBackground"></div>
         <div class="postCardDIV">
-            <input name="title" class="title" placeholder="Post title" maxlength="65">
+            <input name="title" class="title" placeholder="Post title" maxlength="65" required>
             <button name="suggestedLevelOfEnglishBUTTON" class="suggestedLevelOfEnglishBUTTON">Display levels</button>
             <div class="levelCheckboxesDIV">
                 <label for="A0"><input type="checkbox" id="A0" name="suggestedLevelOfEnglish" value="A0">A0</label>
@@ -29,11 +28,11 @@
                 <label for="C1"><input type="checkbox" id="C1" name="suggestedLevelOfEnglish" value="C1">C1</label>
                 <label for="C2"><input type="checkbox" id="C2" name="suggestedLevelOfEnglish" value="C2">C2</label>
             </div>
-            <textarea name="containment" id="containment" rows="18" cols="100" maxlength="15000" placeholder="Main text"></textarea>
+            <textarea name="containment" id="containment" rows="18" cols="100" maxlength="15000" placeholder="Main text" required></textarea>
             <button type="submit" class="sendDataBUTTON">Push!</button>
         </div>
-    </form>
     </div>
+</form>
 
 </body>
 

@@ -8,7 +8,9 @@
     <script src="/js/dropDownBUTTON.js"></script>
 </head>
 <body>
-    <div th:insert="~{Generic/dropdownMenu::dropdown}"></div>
+    <div th:insert="~{Generic/dropdownMenu::dropdown(true, true, false, true, true)}">
+        <a class="dropdownMenuItems" href="/logout">Vivien</a>
+    </div>
 
     <div class="background"></div> 
     <div th:each="avatarByID : ${avatarByID}">

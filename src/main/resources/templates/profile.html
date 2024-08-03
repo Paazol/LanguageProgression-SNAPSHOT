@@ -9,7 +9,8 @@
     <script src = "/js/following.js"></script>
 </head>
 <body>
-    <div th:insert="~{Generic/dropdownMenu::dropdown}"></div>
+    <!-- (profile, login, home, logout) -->
+    <div th:insert="~{Generic/dropdownMenu::dropdown(false, true, true, true, true)}"></div>
 
     <div class="background"></div> 
     <div class="profileDIV">
