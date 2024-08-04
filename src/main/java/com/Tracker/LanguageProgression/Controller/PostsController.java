@@ -27,6 +27,14 @@ public class PostsController {
 		model.addAttribute("posts", postsService.getAllAuthorPosts(id));
 		return "posts";
 	}
+	
+	@GetMapping("/inspect/{postID}")
+    public String viewPost(@PathVariable Long id, Model model) {
+        // Fetch the post by ID and add it to the model
+        Posts post = postsService.getPostById(id);
+        model.addAttribute("post", post);
+        return "inspectPost"; // Return the name of the Thymeleaf template for viewing a single post
+    }
 
 	@GetMapping("/profile/{id}/posts/create")
 	public String postsCreate() {

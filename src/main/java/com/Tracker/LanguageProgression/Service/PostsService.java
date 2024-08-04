@@ -30,6 +30,10 @@ public class PostsService {
 		posts.setIdOfAnAuthor(userID);
 		postsRepository.save(posts);
 	}
+	
+	public Posts getPostById(Long id) {
+        return postsRepository.findById(id).orElse(null);
+    }
 
 	public List<Posts> getAllPosts() {
 		return postsRepository.findAll();
@@ -51,6 +55,7 @@ public class PostsService {
 				avatarByID.put("post", post);
 				avatarByID.put("avatarPicture", author.getProfilePicture());
 				avatarByID.put("username", author.getUsername());
+				avatarByID.put("id", post.getId());
 				avatarsByID.add(avatarByID);
 			}
 		}
