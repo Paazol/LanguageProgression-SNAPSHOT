@@ -21,7 +21,7 @@
                 <a class="title" th:href="@{'/profile/' + ${avatarByID.username} + '/posts/' + ${avatarByID.post.id}}" th:text="${avatarByID.post.title}"></a>
                 <small class="suggestedLevelOfEnglish" th:utext="'Suggested levels: <br>' + ${avatarByID.post.suggestedLevelOfEnglish}" aria-required="true"></small>
                 <p class="containment" th:text="${avatarByID.post.containment}"></p>
-                <a class="continueReading" th:href="@{'/profile/' + ${avatarByID.username} + '/posts/' + ${avatarByID.post.id}}">Continue</a>
+                <a class="continueReading" th:href="@{'/profile/' + ${avatarByID.username} + '/posts/' + ${avatarByID.post.id}}">View</a>
             </div>
         </div>
     </div>

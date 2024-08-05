@@ -26,10 +26,11 @@
                     Level: <span th:text="${session.levelOfEnglish}"></span>
                 </p>
             </span> 
-            <span class="viewPostsSPAN"><a class="viewPosts" th:href="${'/profile/' + session.id + '/posts'}">View posts</a></span>
+            <span class="viewPostsSPAN">
+                <a class="viewPosts" th:href="${'/profile/' + session.id + '/posts'}">View posts</a>
+            </span>
             <button class="followBUTTON">Follow</button>     
         </div>
-        
     </div>
 </body>
 </html>

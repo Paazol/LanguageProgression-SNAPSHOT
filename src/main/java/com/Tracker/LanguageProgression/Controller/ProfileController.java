@@ -17,6 +17,10 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class ProfileController {
 
+	// TODO tweak profile so its gonna be showing certain things for the owner of a profile and
+	// do not show others for the foreign profiles. (soundcloud)
+	// also work on the post view (habr)
+	
 	private final UserRepository userRepository;
 
 	@GetMapping("/profile/{userID}")
