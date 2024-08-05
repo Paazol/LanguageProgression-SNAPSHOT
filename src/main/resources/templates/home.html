@@ -8,9 +8,7 @@
     <script src="/js/dropDownBUTTON.js"></script>
 </head>
 <body>
-    <div th:insert="~{Generic/dropdownMenu::dropdown(true, true, false, true, true)}">
-        <a class="dropdownMenuItems" href="/logout">Vivien</a>
-    </div>
+    <div th:insert="~{Generic/dropdownMenu::dropdown(true, true, false, true, true)}"></div>
 
     <div class="background"></div> 
     <div th:each="avatarByID : ${avatarByID}">
@@ -20,10 +18,10 @@
                 <a class="authorOfAPost" th:href="'/profile/' + ${avatarByID.username}">
                     <img class="userAvatar" th:src="'/profile/' + ${avatarByID.post.idOfAnAuthor} + '/image/userAvatar'" alt="Ohh, no image">
                     <h5 th:text="'by ' + ${avatarByID.username}"></h5></a>
-                <a class="title" th:href="@{/post/{id}(id=${avatarByID.post.id})}" th:text="${avatarByID.post.title}"></a>
+                <a class="title" th:href="@{'/profile/' + ${avatarByID.username} + '/posts/' + ${avatarByID.post.id}}" th:text="${avatarByID.post.title}"></a>
                 <small class="suggestedLevelOfEnglish" th:utext="'Suggested levels: <br>' + ${avatarByID.post.suggestedLevelOfEnglish}" aria-required="true"></small>
                 <p class="containment" th:text="${avatarByID.post.containment}"></p>
-                <a class="continueReading" th:href="@{/post/{id}(id=${avatarByID.post.id})}">View</a>
+                <a class="continueReading" th:href="@{'/profile/' + ${avatarByID.username} + '/posts/' + ${avatarByID.post.id}}">Continue</a>
             </div>
         </div>
     </div>
