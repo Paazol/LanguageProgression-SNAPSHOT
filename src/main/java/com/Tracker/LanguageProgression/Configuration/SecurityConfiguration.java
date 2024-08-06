@@ -33,7 +33,7 @@ public class SecurityConfiguration {
                 .maxSessionsPreventsLogin(true))
 
         .authorizeHttpRequests((requests) -> requests
-				.requestMatchers("/profile/**")
+				.requestMatchers("/**")
 
 				.hasRole("USER")
 				.anyRequest().permitAll()

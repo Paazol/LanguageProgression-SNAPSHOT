@@ -21,9 +21,11 @@ public class ProfileController {
 	// do not show others for the foreign profiles. (soundcloud)
 	// also work on the post view (habr)
 	
+	// create buttons for the post creation
+	
 	private final UserRepository userRepository;
 
-	@GetMapping("/profile/{userID}")
+	@GetMapping("/{userID}")
 	public String profile(@PathVariable Long userID, Model model) {
 
 		Optional<User> idOfAUser = userRepository.findById(userID);

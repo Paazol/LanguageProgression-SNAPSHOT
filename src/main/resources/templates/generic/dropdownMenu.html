@@ -6,7 +6,7 @@
     <div class="dropdownMenuDIV">
 
         <th:block th:if="${profile}">
-            <a class="dropdownMenuItems" th:href="'/profile/' + ${session.id}" th:if="${session.id != null}">Profile</a>
+            <a class="dropdownMenuItems" th:href="'/' + ${session.id}" th:if="${session.id != null}">Profile</a>
         </th:block>
                 
         <th:block th:if="${login}">
@@ -18,7 +18,7 @@
         </th:block>
 
         <th:block th:if="${posts}">
-            <a class="dropdownMenuItems" th:href="'/profile/' + ${session.id} + '/posts'">Posts</a>
+            <a class="dropdownMenuItems" th:href="'/' + ${session.id} + '/posts'">Posts</a>
         </th:block>
                 
         <th:block th:if="${logout}">

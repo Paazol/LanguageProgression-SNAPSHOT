@@ -22,13 +22,13 @@ public class PostsController {
 
 	private final PostsService postsService;
 	
-	@GetMapping("/profile/{id}/posts")
+	@GetMapping("/{id}/posts")
 	public String userPosts(@PathVariable Long id, Model model) {
 		model.addAttribute("posts", postsService.getAllAuthorPosts(id));
 		return "posts";
 	}
 	
-	@GetMapping("/profile/{id}/posts/{postID}")
+	@GetMapping("/{id}/posts/{postID}")
     public String viewPost(@PathVariable Long postID, Model model) {
         // Fetch the post by ID and add it to the model
         Posts post = postsService.getPostById(postID);
@@ -36,8 +36,13 @@ public class PostsController {
         return "inspectPost"; // Return the name of the Thymeleaf template for viewing a single post
     }
 
-
-	@PostMapping("/profile/{id}/posts/create")
+	@GetMapping("/{id}/create")
+	public String postsCreate() {
+		return "createPosts";
+	}
+	
+	
+	@PostMapping("/{id}/createPost/upload")
     public ResponseEntity<Posts> createPost(@ModelAttribute Posts posts, HttpSession session) {
     	posts.setId(null);
 

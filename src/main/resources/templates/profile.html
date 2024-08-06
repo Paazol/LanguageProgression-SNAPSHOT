@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8"/>
     <title>Profile</title>
-    <link rel="stylesheet" type="text/css" href="/css/generic.css">
-    <link rel="stylesheet" type="text/css" href="/css/profile.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/generic.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/profile.css}">
     <script src="/js/dropDownBUTTON.js"></script>
     <script src = "/js/following.js"></script>
 </head>
@@ -16,7 +16,7 @@
     <div class="profileDIV">
         <div class="profileBackground"></div>
         <div class="profileCardDIV">
-            <form th:action="${'/profile/' + session.id + '/upload'}" method="post" enctype="multipart/form-data">
+            <form th:action="${'/' + session.id + '/upload'}" method="post" enctype="multipart/form-data">
                 <button class="profilePictureBUTTON" type="submit">Upload avatar</button>
                 <input id="profilePictureINPUT" name="profilePicture" type="file" draggable="true">
             </form>
@@ -26,8 +26,9 @@
                     Level: <span th:text="${session.levelOfEnglish}"></span>
                 </p>
             </span> 
+
             <span class="viewPostsSPAN">
-                <a class="viewPosts" th:href="${'/profile/' + session.id + '/posts'}">View posts</a>
+                <a class="viewPosts" th:href="${'/' + session.id + '/posts'}">View posts</a>
             </span>
             <button class="followBUTTON">Follow</button>     
         </div>

@@ -12,8 +12,8 @@
     <!-- (profile, login, home, logout) -->
     <div th:insert="~{Generic/dropdownMenu::dropdown(true, true, true, true, true)}"></div>
 
-    <div class="background"></div> 
-<form id="postForm" th:action="${'/profile/' + session.id + '/posts/create'}" method="post">
+    <div class="background"></div>
+<form id="postForm" th:action="${'/' + session.id + '/posts/create'}" method="post">
     <div class="postDIV">
         <div class="postBackground"></div>
         <div class="postCardDIV">

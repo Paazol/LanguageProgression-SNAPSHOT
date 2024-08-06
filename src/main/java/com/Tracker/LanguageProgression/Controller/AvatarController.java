@@ -28,7 +28,7 @@ public class AvatarController {
 	private final UserRepository userRepository;
 	private final AuthenticationService authenticationService;
 
-	@GetMapping("/profile/{userID}/image/userAvatar")
+	@GetMapping("/{userID}/image/userAvatar")
     public ResponseEntity<byte[]> getProfilePicture(@PathVariable Long userID, HttpSession session) {
 
         Optional<User> user = userRepository.findById(userID);
@@ -41,14 +41,13 @@ public class AvatarController {
         }
     }
     
-    @PostMapping("/profile/{userID}/upload")
+    @PostMapping("/{userID}/upload")
     public ResponseEntity<User> createPost(@PathVariable Long userID, @RequestParam("profilePicture") MultipartFile profilePicture, HttpSession session) throws IOException {
     	HttpHeaders headers = new HttpHeaders();
 
 		User image = authenticationService.saveProfilePicture(profilePicture, session);
-        headers.add("Location", "/profile/" + userID);
+        headers.add("Location", "/" + userID);
 
         return ResponseEntity.status(HttpStatus.FOUND).headers(headers).body(image);
     }
-    
 }

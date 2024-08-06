@@ -13,7 +13,7 @@
 
     <div class="profileDIV">
         <div class="profileBackground"></div>
-            <form th:action="${'/profile/' + session.id + '/upload'}" method="post" enctype="multipart/form-data">
+            <form th:action="${'/' + session.id + '/upload'}" method="post" enctype="multipart/form-data">
                 <button class="profilePictureBUTTON" type="submit">Upload avatar</button>
                 <input id="profilePictureINPUT" name="profilePicture" type="file" draggable="true">
             </form>
@@ -23,7 +23,7 @@
                     Level: <span th:text="${session.levelOfEnglish}"></span>
                 </p>
             </span> 
-            <span class="viewPostsSPAN"><a class="viewPosts" th:href="${'/profile/' + session.id + '/posts'}">View posts</a></span>
+            <span class="viewPostsSPAN"><a class="viewPosts" th:href="${'/' + session.id + '/posts'}">View posts</a></span>
             <button class="followBUTTON">Follow</button>     
         </div>
     
