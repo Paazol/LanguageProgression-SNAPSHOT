@@ -27,6 +27,8 @@
                 </p>
             </span> 
 
+            <a class="createPosts" th:if="${session.id == userID}" th:href="${'/' + session.id + '/create'}">Create post</a>
+
             <span class="viewPostsSPAN">
                 <a class="viewPosts" th:href="${'/' + session.id + '/posts'}">View posts</a>
             </span>

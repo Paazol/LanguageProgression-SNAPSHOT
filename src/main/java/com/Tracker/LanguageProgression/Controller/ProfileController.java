@@ -29,6 +29,8 @@ public class ProfileController {
 	public String profile(@PathVariable Long userID, Model model) {
 
 		Optional<User> idOfAUser = userRepository.findById(userID);
+		
+		model.addAttribute("userID", userID);
 
 		if (idOfAUser.isPresent() && idOfAUser.get().getProfilePicture() != null) {
 			byte[] profilePictureBytes = idOfAUser.get().getProfilePicture();

@@ -34,14 +34,14 @@ public class SecurityConfiguration {
 
         .authorizeHttpRequests((requests) -> requests
 				.requestMatchers("/**")
-
 				.hasRole("USER")
 				.anyRequest().permitAll()
         )
 
         .formLogin(formLogin -> formLogin
         		.loginPage("/login")
-        		.defaultSuccessUrl("/home").permitAll())
+        		.defaultSuccessUrl("/home")
+        		.permitAll())
         		.userDetailsService(additionalUserDetails)
         		.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .httpBasic(Customizer.withDefaults());

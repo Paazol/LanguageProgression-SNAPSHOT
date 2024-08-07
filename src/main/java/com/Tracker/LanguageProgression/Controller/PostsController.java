@@ -42,7 +42,7 @@ public class PostsController {
 	}
 	
 	
-	@PostMapping("/{id}/createPost/upload")
+	@PostMapping("/{id}/create/upload")
     public ResponseEntity<Posts> createPost(@ModelAttribute Posts posts, HttpSession session) {
     	posts.setId(null);
 
@@ -50,7 +50,7 @@ public class PostsController {
         Long id = (Long) session.getAttribute("id");
 
         postsService.createPost(id, posts);
-        headers.add("Location", "/profile/" + id + "/posts");
+        headers.add("Location", "/" + id + "/posts");
 
         return ResponseEntity.status(HttpStatus.FOUND).headers(headers).body(posts);
     }
