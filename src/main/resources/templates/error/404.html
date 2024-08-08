@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>view
+<head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/generic.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}">
+    <script src="/js/dropDownBUTTON.js"></script>
+</head>
+<body>
+    <div th:insert="~{Generic/dropdownMenu::dropdown(true, true, true, true, true)}"></div>
+
+    <div class="background"></div> 
+    <h1>Uh-oh, there's noone with that kind of username :C</h1>
+</body>
+</html>

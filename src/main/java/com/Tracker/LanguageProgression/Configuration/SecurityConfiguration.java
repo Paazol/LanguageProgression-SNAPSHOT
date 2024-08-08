@@ -33,8 +33,6 @@ public class SecurityConfiguration {
                 .maxSessionsPreventsLogin(true))
 
         .authorizeHttpRequests((requests) -> requests
-				.requestMatchers("/**")
-				.hasRole("USER")
 				.anyRequest().permitAll()
         )
 
@@ -45,7 +43,6 @@ public class SecurityConfiguration {
         		.userDetailsService(additionalUserDetails)
         		.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .httpBasic(Customizer.withDefaults());
-
 		return http.build();
 	}
 
