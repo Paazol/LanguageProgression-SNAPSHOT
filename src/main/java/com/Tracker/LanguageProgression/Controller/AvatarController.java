@@ -42,7 +42,7 @@ public class AvatarController {
     }
     
     @PostMapping("/{userID}/upload")
-    public ResponseEntity<User> createPost(@PathVariable Long userID, @RequestParam("profilePicture") MultipartFile profilePicture, HttpSession session) throws IOException {
+    public ResponseEntity<User> createProfilePicture(@PathVariable Long userID, @RequestParam("profilePicture") MultipartFile profilePicture, HttpSession session) throws IOException {
     	HttpHeaders headers = new HttpHeaders();
 
 		User image = authenticationService.saveProfilePicture(profilePicture, session);

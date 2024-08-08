@@ -15,6 +15,7 @@
     width: 1400px;
     height: 206px;
     background-color: #903737;
+    border: 1px solid #0e0707;
     border-radius: 30px;
     filter: opacity(0.8) brightness(0.9);
 }

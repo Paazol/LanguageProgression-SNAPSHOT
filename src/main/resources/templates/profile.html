@@ -5,6 +5,7 @@
     <title>Profile</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/generic.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/profile.css}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
     <script src="/js/dropDownBUTTON.js"></script>
     <script src = "/js/following.js"></script>
 </head>
@@ -16,10 +17,12 @@
     <div class="profileDIV">
         <div class="profileBackground"></div>
         <div class="profileCardDIV">
-            <form th:action="${'/' + session.id + '/upload'}" method="post" enctype="multipart/form-data">
-                <button class="profilePictureBUTTON" type="submit">Upload avatar</button>
-                <input id="profilePictureINPUT" name="profilePicture" type="file" draggable="true">
-            </form>
+            <div th:if="${session.id == userID}">
+                <form th:action="${'/' + session.id + '/upload'}" method="post" enctype="multipart/form-data">
+                    <button class="profilePictureBUTTON" type="submit">Upload avatar</button>
+                    <input id="profilePictureINPUT" name="profilePicture" type="file" draggable="true">
+                </form>
+            </div>
             <img class="userAvatar" th:src="${avatarByID}">
             <span class="levelOfEnglishSPAN">
                 <p class="levelOfEnglish">

@@ -4,28 +4,30 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 30%;
-    width: 600px;
-    height: 500px;
+    top: 22%;
+    width: 900px;
+    height: 700px;
+    
 }
 
 .profileBackground {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: #903737;
-    border-radius: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #903737;
+    border: 1px solid #0e0707;
+    border-radius: 30px;
     filter: opacity(0.8) brightness(0.9);
 }
 
 .profileCardDIV {
     position: relative;
     display: grid;
-    width: 575px;
-    height: 475px;
+    width: 97%;
+    height: 95%;
     border-radius: 30px;
     background-color: #0e0707;
     place-items: center;
@@ -186,6 +188,7 @@
 
 .userAvatar {
     position: relative;
+    cursor: pointer;
     bottom: 15px;
     right: 155px;
     border-radius: 25px;

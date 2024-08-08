@@ -15,7 +15,7 @@
         <div class="postDIV">
             <div class="postBackground"></div>
             <div class="postCardDIV">
-                <a class="authorOfAPost" th:href="'/' + ${avatarByID.username}">
+                <a class="authorOfAPost" th:href="'/' + ${avatarByID.post.idOfAnAuthor}">
                     <img class="userAvatar" th:src="'/' + ${avatarByID.post.idOfAnAuthor} + '/image/userAvatar'" alt="Ohh, no image">
                     <h5 th:text="'by ' + ${avatarByID.username}"></h5></a>
                 <a class="title" th:href="@{'/' + ${avatarByID.username} + '/posts/' + ${avatarByID.post.id}}" th:text="${avatarByID.post.title}"></a>
