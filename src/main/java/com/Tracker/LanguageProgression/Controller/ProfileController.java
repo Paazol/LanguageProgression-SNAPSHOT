@@ -37,7 +37,7 @@ public class ProfileController {
 			String base64Image = Base64.getEncoder().encodeToString(profilePictureBytes);
 			model.addAttribute("avatarByID", "data:image/jpeg;base64," + base64Image);
 		} else {
-			String avatarPath = "/images/default_profile_picture.png";
+			String avatarPath = "/images/userDefaultIcon.png";
 			model.addAttribute("avatarByID", avatarPath);
 		}
 		return "profile";
