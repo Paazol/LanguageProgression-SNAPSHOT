@@ -1,7 +1,7 @@
 import Reac, {useState} from "react";
-import "./css/generic.css"
-import "./css/createPosts.css"
-import "./shared/utils/dropdownButton.js"
+import "../../css/generic.css"
+import "../../css/createPosts.css"
+import "../../shared/utils/dropdownButton.js"
 
 
 function PostCreation() {
