@@ -1,39 +1,12 @@
-import {useEffect, useState} from 'react'
 import './home.css'
 
 function Home() {
-    const [avatarByID, setAvatarByID] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        fetch('http://localhost:5174/home') // Adjust the URL to your backend endpoint
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                setAvatarByID(data);
-                setLoading(false);
-            })
-            .catch(error => {
-                console.error('There was an error fetching the data!', error);
-                setError(error);
-                setLoading(false);
-            });
-    }, []);
-
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error.message}</p>;
-
     return (
         <>
             <meta charSet="utf-8" />
             <title>Home</title>
-            <link rel="stylesheet" type="text/css" href="./css/generic.css" />
-            <link rel="stylesheet" type="text/css" href="./css/home.css" />
+            <link rel="stylesheet" type="text/css" href="../../css/generic.css" />
+            <link rel="stylesheet" type="text/css" href="../../css/home.css" />
             <div id="dropdown-menu"></div> {/* Assuming the dropdown menu is initialized by the script */}
             <div className="background" />
             {avatarByID.map((avatar) => (
