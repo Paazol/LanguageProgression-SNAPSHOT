@@ -1,28 +1,10 @@
-import Reac, {useState} from "react";
+import React from "react";
 import "../../css/generic.css"
 import "../../css/createPosts.css"
 import "../../shared/utils/dropdownButton.js"
 
 
 function PostCreation() {
-    const [title, setTitle] = useState('');
-    const [suggestedLevelOfEnglish, setSuggestedLevelOfEnglish] = useState([]);
-    const [containment, setContainment] = useState('');
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // Handle form submission logic here
-        console.log({ title, suggestedLevelOfEnglish, containment });
-    };
-
-    const handleLevelChange = (event) => {
-        const { value, checked } = event.target;
-        if (checked) {
-            setSuggestedLevelOfEnglish([...suggestedLevelOfEnglish, value]);
-        } else {
-            setSuggestedLevelOfEnglish(suggestedLevelOfEnglish.filter(level => level !== value));
-        }
-    };
 
     return (
         <div>
