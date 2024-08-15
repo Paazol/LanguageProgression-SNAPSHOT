@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-import './styles/home.css'
+import './home.css'
 
 function Home() {
     const [avatarByID, setAvatarByID] = useState([]);

@@ -1,17 +1,9 @@
-function DropdownButton() {
-    return (
-        <>
-        const dropdownButton = document.querySelector(".menuBUTTON")
-        dropdownButton.addEventListener("click", function(event) {
-        event.preventDefault()
-        const dropdownMenu = dropdownButton.parentElement.nextElementSibling;
-        dropdownMenu.classList.toggle("dropdownButton-clicked");
+document.addEventListener("DOMContentLoaded", function() {
+    const levelButton = document.querySelector(".suggestedLevelOfEnglishBUTTON");
+    const levelMenu = document.querySelector(".levelCheckboxesDIV");
 
-        dropdownButton.disabled = true;
-        setTimeout(() => {
-        dropdownButton.disabled = false;
-        }, 100)
-        });
-        </>
-    )
-}
+    levelButton.addEventListener("click", function(event) {
+        event.preventDefault();
+        levelMenu.classList.toggle("levelCheckboxes-transition");
+    });
+});
