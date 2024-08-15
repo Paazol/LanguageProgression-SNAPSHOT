@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-import './home.css'
+import './styles/home.css'
 
 function Home() {
     const [avatarByID, setAvatarByID] = useState([]);
@@ -32,8 +32,8 @@ function Home() {
         <>
             <meta charSet="utf-8" />
             <title>Home</title>
-            <link rel="stylesheet" type="text/css" href="./css/generic.css" />
-            <link rel="stylesheet" type="text/css" href="./css/home.css" />
+            <link rel="stylesheet" type="text/css" href="../../css/generic.css" />
+            <link rel="stylesheet" type="text/css" href="../../css/home.css" />
             <div id="dropdown-menu"></div> {/* Assuming the dropdown menu is initialized by the script */}
             <div className="background" />
             {avatarByID.map((avatar) => (

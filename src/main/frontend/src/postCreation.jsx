@@ -1,10 +1,10 @@
 import Reac, {useState} from "react";
 import "./css/generic.css"
 import "./css/createPosts.css"
-import "./shared/dropdownButton.jsx"
+import "./shared/utils/dropdownButton.js"
 
 
-function CreatePost() {
+function PostCreation() {
     const [title, setTitle] = useState('');
     const [suggestedLevelOfEnglish, setSuggestedLevelOfEnglish] = useState([]);
     const [containment, setContainment] = useState('');
@@ -85,4 +85,4 @@ function CreatePost() {
     );
 }
 
-export default CreatePost;
+export default PostCreation;
