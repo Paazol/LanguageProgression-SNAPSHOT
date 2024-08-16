@@ -2,6 +2,7 @@ package com.Tracker.LanguageProgression.Configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -15,6 +16,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.Tracker.LanguageProgression.Service.AdditionalUserDetails;
 
 import lombok.AllArgsConstructor;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebSecurity
@@ -26,8 +29,7 @@ public class SecurityConfiguration {
 
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf(csrf -> csrf.disable())
-
+        http
         .sessionManagement(sessionManagement -> sessionManagement.sessionFixation().migrateSession()
                 .maximumSessions(1)
                 .maxSessionsPreventsLogin(true))
@@ -55,5 +57,19 @@ public class SecurityConfiguration {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
     	return configuration.getAuthenticationManager();
     }
+
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(@NonNull CorsRegistry registry) {
+				registry.addMapping("/**")
+						.allowedOrigins("http://localhost:5173")
+						.allowedMethods("GET", "POST", "PUT", "DELETE")
+						.allowedHeaders("*")
+						.allowCredentials(true);
+			}
+		};
+	}
 
 }
