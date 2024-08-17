@@ -1,19 +1,15 @@
 import React from 'react';
 import ReactDOM from "react-dom/client";
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-function createRouter(path) {
-    const router = createBrowserRouter([
-        {
-            path: path,
-        }
-    ]);
+function createRouter(routes) {
+    const router = createBrowserRouter(routes);
 
     ReactDOM.createRoot(document.getElementById("root")).render(
         <React.StrictMode>
-            <RouterProvider router={path} />
+            <RouterProvider router={router} />
         </React.StrictMode>
     );
 }
 
-
+export default createRouter;
