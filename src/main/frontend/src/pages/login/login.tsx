@@ -1,6 +1,7 @@
-import "./login.css"
+import React from 'react';
+import "./login.css";
 
-function Login() {
+const Login: React.FC = () => {
     return (
         <html key="1">
         <head>
@@ -15,13 +16,13 @@ function Login() {
                 <div className="Input">
                     <input maxLength="20" name="username" required type="text" />
                     <label>Username</label>
-                    <img className="loginICONS" src="/authentication/user.png" />
+                    <img className="loginICONS" src="../../../public/Auth/account.png" alt="Account Icon" />
                 </div>
                 <br />
                 <div className="Input">
                     <input id="password" name="password" required type="password" />
                     <label>Password</label>
-                    <img className="loginICONS" src="/authentication/lock_closed.png" />
+                    <img className="loginICONS" src="../../../public/Auth/lock_closed.png" alt="Lock Icon" />
                 </div>
                 <div id="loginButtonDIV">
                     <button id="loginButton" type="submit">Login</button>
