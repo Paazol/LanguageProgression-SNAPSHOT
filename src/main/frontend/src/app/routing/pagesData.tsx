@@ -1,17 +1,18 @@
-import { routerType } from "../types/router.types";
-import Login from "./login";
-import Home from "./home";
+import { routerType } from "./router.types";
+import Login from "../../pages/login/login.tsx";
+import Home from "../../pages/home/home.tsx";
 
 const pagesData: routerType[] = [
     {
-        path: "/",
-        element: <Home />,
-        title: "home"
+        path: "/home",
+        title: "home",
+        element: <Home />
+
     },
     {
         path: "/login",
-        element: <Login />,
-        title: "Login"
+        title: "login",
+        element: <Login />
     }
 ];
 

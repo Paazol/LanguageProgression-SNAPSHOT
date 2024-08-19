@@ -3,7 +3,7 @@ import "./login.css";
 
 const Login: React.FC = () => {
     return (
-        <html key="1">
+        <html>
         <head>
             <meta charSet="UTF-8" />
             <title>Login</title>

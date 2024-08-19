@@ -1,6 +1,7 @@
+import React from "react";
 import './home.css'
 
-function Home() {
+const Home: React.FC = () =>{
     return (
         <>
             <meta charSet="utf-8" />
