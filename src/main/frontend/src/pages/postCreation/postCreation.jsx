@@ -1,5 +1,5 @@
 import React from "react";
-import "../../css/generic.css"
+import "../../shared/styles/generic.css"
 import "../../css/createPosts.css"
 import "../../shared/lib/utils/dropdownButton.js"
 
