@@ -6,7 +6,7 @@ const Home: React.FC = () =>{
         <>
             <meta charSet="utf-8" />
             <title>Home</title>
-            <link rel="stylesheet" type="text/css" href="../../css/generic.css" />
+            <link rel="stylesheet" type="text/css" href="../../shared/styles/generic.css" />
             <link rel="stylesheet" type="text/css" href="../../css/home.css" />
             <div id="dropdown-menu"></div> {/* Assuming the dropdown menu is initialized by the script */}
             <div className="background" />

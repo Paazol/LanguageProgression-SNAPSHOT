@@ -6,9 +6,9 @@
 
 body {
     height: 100%;
-    margin: 0px;
     display: grid;
     place-items: center;
+    background: transparent;
 }
 
 .background {
@@ -17,7 +17,6 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: black;
     background-image: url(../../../public/General/authWallpaper.jpg);
     background-size: 160%;
     filter: brightness(0.45);
@@ -48,8 +47,7 @@ body {
     color: #ffffff;
     border: none;
     border-bottom: 3px solid transparent;
-    padding: 5px;
-    padding-left: 2px;
+    padding: 5px 5px 5px 2px;
     border-radius: 15px;
     background: linear-gradient(45deg, #332f2f, #161616);
     transition: 0.15s;

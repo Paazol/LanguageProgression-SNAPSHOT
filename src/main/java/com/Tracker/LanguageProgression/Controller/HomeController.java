@@ -23,7 +23,7 @@ public class HomeController {
     private final AdditionalUserDetails userDetails;
     private final PostsService postsService;
     
-    @GetMapping("/getHomeDATA")
+    @GetMapping("/getHomeData")
     public Map<String, Object> home(Principal principal, HttpSession session) {
         Map<String, Object> response = new HashMap<>();
 
