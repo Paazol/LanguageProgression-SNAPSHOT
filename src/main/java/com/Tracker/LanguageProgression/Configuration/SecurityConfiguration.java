@@ -1,5 +1,8 @@
 package com.Tracker.LanguageProgression.Configuration;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.lang.NonNull;
@@ -16,6 +19,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.Tracker.LanguageProgression.Service.AdditionalUserDetails;
 
 import lombok.AllArgsConstructor;
+
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -44,7 +50,21 @@ public class SecurityConfiguration {
         		.permitAll())
         		.userDetailsService(additionalUserDetails)
         		.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-                .httpBasic(Customizer.withDefaults());
+                .httpBasic(Customizer.withDefaults())
+        .cors(httpSecurityCorsConfigurer -> {
+        	CorsConfiguration corsConfiguration = new CorsConfiguration();
+        	UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        	
+        	corsConfiguration.setAllowedOrigins(Arrays.asList("*"));
+        	corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        	corsConfiguration.setAllowedHeaders(Arrays.asList("*"));
+        	corsConfiguration.setAllowCredentials(true);
+        	
+        	// as far as i know that thing is a replacement for "registry.addMapping("/**")" 
+        	// located zin the corsConfigurer
+        	source.registerCorsConfiguration("/**", corsConfiguration);
+        	httpSecurityCorsConfigurer.configurationSource(source);
+        });
 		return http.build();
 	}
 
@@ -66,7 +86,7 @@ public class SecurityConfiguration {
 				registry.addMapping("/**")
 						.allowedOrigins("http://localhost:5173")
 						.allowedMethods("GET", "POST", "PUT", "DELETE")
-						.allowedHeaders("*")
+						.allowedHeaders("*")	
 						.allowCredentials(true);
 			}
 		};
