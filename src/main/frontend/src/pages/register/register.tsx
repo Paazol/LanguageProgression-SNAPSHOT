@@ -1,22 +1,18 @@
 import React from "react";
 import "../../shared/styles/generic.css"
 import "./register.css";
+import registrationService from "../../shared/api/services/post/registrationService.tsx";
+
 
 const Register: React.FC = () => {
     return (
-    <html>
-    <head>
-        <meta charSet="UTF-8"/>
-        <title>Registration</title>
-    </head>
-    <body>
-    <form action="/register" method="post">
+    <div>
         <div className="background"></div>
         <div className="wrapper colorable">
-            <form className="registerFORM" action="/register" method="post">
+            <form onSubmit={registrationService} method="post">
                 <h1 id="registerMainHeader">Register</h1>
 
-                <div className="Input">
+                <div className="Input   ">
                     <input name="username" type="text" maxLength="20" required/>
                     <label>Username</label>
                     <img className="loginICONS" src="../../../public/Auth/user.png"/>
@@ -35,7 +31,7 @@ const Register: React.FC = () => {
                 <div className="Input">
                     <input name="password" id="password" type="password" required/>
                     <label>Password</label>
-                    <img className="loginICONS" src="/authentication/lock_closed.png"/>
+                    <img className="loginICONS" src="../../../public/Auth/lock_closed.png"/>
                 </div>
 
                 <br/>
@@ -43,7 +39,7 @@ const Register: React.FC = () => {
                 <div className="Input" id="passwordRepeatDIV">
                     <input name="repeatedPasswordINPUT" id="repeatedPassword" type="password" required/>
                     <label id="repeatPasswordLabel">Repeat password</label>
-                    <img className="loginICONS" src="/authentication/lock_repeat.png"/>
+                    <img className="loginICONS" src="../../../public/Auth/lock_repeat.png"/>
                 </div>
 
                 <div className="chooseOfALanguageLevelDIV">
@@ -58,16 +54,12 @@ const Register: React.FC = () => {
                         <option id="C2">C2</option>
                     </select>
                 </div>
-
                 <div id="registerButtonDIV">
                     <button type="submit" id="registerButton">Register</button>
                 </div>
             </form>
         </div>
-    </form>
-    </body>
-
-    </html>
+    </div>
     )
 }
 
