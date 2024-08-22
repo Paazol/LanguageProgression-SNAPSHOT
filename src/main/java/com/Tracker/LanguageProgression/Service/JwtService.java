@@ -44,7 +44,7 @@ public class JwtService {
 
     public boolean isValid(String token, UserDetails user) {
         String username = extractUsername(token);
-        return username.equals(user.getUsername()) && !isTokenExpired(token);
+        return username.equals(user.getUsername()) && isTokenExpired(token);
     }
 
     public boolean isValidRefreshToken(String token, User user) {
@@ -55,13 +55,13 @@ public class JwtService {
                 .map(t -> !t.isLoggedOut())
                 .orElse(false);
 
-        return (username.equals(user.getUsername())) && !isTokenExpired(token) && validRefreshToken;
+        return (username.equals(user.getUsername())) && isTokenExpired(token) && validRefreshToken;
     }
 
     private boolean isTokenExpired(String token) {
         Date expirationDate = extractExpiration(token);
         logger.debug("Token expiration date: {}", expirationDate);
-        return expirationDate.before(new Date());
+        return !expirationDate.before(new Date());
     }
 
     private Date extractExpiration(String token) {
@@ -76,7 +76,7 @@ public class JwtService {
     private Claims extractAllClaims(String token) {
         return Jwts
                 .parser()
-                .verifyWith(getSigninKey())
+                .verifyWith(getSigningKey())
                 .build()
                 .parseSignedClaims(token)
                 .getPayload();
@@ -93,18 +93,17 @@ public class JwtService {
     private String generateToken(User user, long expireTime) {
         Date expirationDate = new Date(System.currentTimeMillis() + expireTime);
         logger.debug("Generating token with expiration date: {}", expirationDate);
-        String token = Jwts
+
+        return Jwts
                 .builder()
                 .subject(user.getUsername())
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(expirationDate)
-                .signWith(getSigninKey())
+                .signWith(getSigningKey())
                 .compact();
-
-        return token;
     }
 
-    private SecretKey getSigninKey() {
+    private SecretKey getSigningKey() {
         byte[] keyBytes = Decoders.BASE64URL.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBytes);
     }

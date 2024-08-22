@@ -1,11 +1,9 @@
 package com.Tracker.LanguageProgression.Configuration;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
+import com.Tracker.LanguageProgression.Service.AdditionalUserDetails;
+import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -15,15 +13,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
-import com.Tracker.LanguageProgression.Service.AdditionalUserDetails;
-
-import lombok.AllArgsConstructor;
-
+import org.springframework.security.web.csrf.CsrfTokenRepository;
+import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -50,21 +45,24 @@ public class SecurityConfiguration {
         		.permitAll())
         		.userDetailsService(additionalUserDetails)
         		.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-                .httpBasic(Customizer.withDefaults())
+                .httpBasic(Customizer.withDefaults()
+				)
+
         .cors(httpSecurityCorsConfigurer -> {
         	CorsConfiguration corsConfiguration = new CorsConfiguration();
         	UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        	
-        	corsConfiguration.setAllowedOrigins(Arrays.asList("*"));
-        	corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        	corsConfiguration.setAllowedHeaders(Arrays.asList("*"));
+
+        	corsConfiguration.setAllowedOrigins(List.of("http://localhost:5173"));
+        	corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        	corsConfiguration.setAllowedHeaders(List.of("X-CSRF-TOKEN", "Content-Type"));
         	corsConfiguration.setAllowCredentials(true);
-        	
-        	// as far as i know that thing is a replacement for "registry.addMapping("/**")" 
-        	// located zin the corsConfigurer
+
+        	// as far as i know that thing is a replacement for "registry.addMapping("/**")"
+        	// located in the corsConfigurer
         	source.registerCorsConfiguration("/**", corsConfiguration);
         	httpSecurityCorsConfigurer.configurationSource(source);
-        });
+        })
+		.csrf(csrf -> csrf.csrfTokenRepository(csrfTokenRepository()));
 		return http.build();
 	}
 
@@ -79,17 +77,8 @@ public class SecurityConfiguration {
     }
 
 	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(@NonNull CorsRegistry registry) {
-				registry.addMapping("/**")
-						.allowedOrigins("http://localhost:5173")
-						.allowedMethods("GET", "POST", "PUT", "DELETE")
-						.allowedHeaders("*")	
-						.allowCredentials(true);
-			}
-		};
+	public CsrfTokenRepository csrfTokenRepository() {
+		return new HttpSessionCsrfTokenRepository();
 	}
 
 }
