@@ -1,7 +1,7 @@
 import React from "react";
 import "../../shared/styles/generic.css"
 import "./register.css";
-import registrationService from "../../shared/api/services/post/registrationService.tsx";
+import registrationService from "../../shared/api/services/post/registrationService.ts";
 
 
 const Register: React.FC = () => {

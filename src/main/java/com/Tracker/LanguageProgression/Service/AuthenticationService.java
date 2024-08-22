@@ -110,9 +110,7 @@ public class AuthenticationService {
 			return;
 		}
 
-		validTokens.forEach(token -> {
-			token.setLoggedOut(true);
-		});
+		validTokens.forEach(token -> token.setLoggedOut(true));
 
 		tokenRepository.saveAll(validTokens);
 	}
