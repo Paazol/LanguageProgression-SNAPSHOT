@@ -17,9 +17,7 @@ const registrationService = async (e: React.FormEvent<HTMLFormElement>) => {
             const response = await fetch('http://localhost:8080/security/csrf-token', {
                 method: "GET"
             });
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
+
             const csrfToken = await response.json();
             return csrfToken.token;
         } catch (error) {
@@ -44,7 +42,6 @@ const registrationService = async (e: React.FormEvent<HTMLFormElement>) => {
         if (!response.ok) {
             const errorResponse = await response.json();
             console.error('Registration failed:', errorResponse);
-            throw new Error(`HTTP error! status: ${response.status}`);
         }
 
         const result = await response.json();
