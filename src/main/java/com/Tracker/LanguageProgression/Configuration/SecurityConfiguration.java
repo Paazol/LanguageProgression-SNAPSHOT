@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.web.cors.CorsConfiguration;
@@ -40,10 +41,10 @@ public class SecurityConfiguration {
         )
 
         .formLogin(formLogin -> formLogin
-        		.loginPage("/login")
-        		.defaultSuccessUrl("/home")
-        		.permitAll())
-        		.userDetailsService(additionalUserDetails)
+                .loginPage("/login")
+                .defaultSuccessUrl("/home")
+                .permitAll())
+                .userDetailsService(additionalUserDetails)
         		.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .httpBasic(Customizer.withDefaults()
 				)
@@ -62,7 +63,7 @@ public class SecurityConfiguration {
         	source.registerCorsConfiguration("/**", corsConfiguration);
         	httpSecurityCorsConfigurer.configurationSource(source);
         })
-		.csrf(csrf -> csrf.csrfTokenRepository(csrfTokenRepository()));
+                .csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()));
 		return http.build();
 	}
 

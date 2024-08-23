@@ -1,6 +1,6 @@
 package com.Tracker.LanguageProgression.Controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,9 +13,9 @@ import com.Tracker.LanguageProgression.Model.AuthenticationResponse;
 import com.Tracker.LanguageProgression.Service.AuthenticationService;
 
 @RestController
+@AllArgsConstructor
 public class AuthController {
 
-	@Autowired
 	private AuthenticationService authenticationService;
 
 	@PostMapping("/register")
