@@ -1,4 +1,5 @@
 import React from "react";
+import Cookies from 'js-cookie';
 
 const registrationService = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -12,43 +13,31 @@ const registrationService = async (e: React.FormEvent<HTMLFormElement>) => {
     const levelOfEnglish = formData.get("levelOfEnglish") as string;
 
     async function getCsrfToken() {
-        try {
-            // Fetch the CSRF token from the server
             const response = await fetch('http://localhost:8080/security/csrf-token', {
                 method: "GET"
             });
-
             const csrfToken = await response.json();
+            Cookies.set('X-CSRF-TOKEN', csrfToken.token, { expires: 1 });
             return csrfToken.token;
-        } catch (error) {
-            console.error('Error fetching CSRF token:', error);
-            throw error;
-        }
     }
 
-    try {
-        const csrfToken = await getCsrfToken();
-        console.log('CSRF Token:', csrfToken);
+    const csrfToken = await getCsrfToken();
+    console.log(csrfToken);
+    const response = await fetch('http://localhost:8080/register', {
+        method: 'POST',
+        headers: {
+            "X-CSRF-TOKEN": csrfToken,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, email, password, levelOfEnglish })
+    });
 
-        const response = await fetch('http://localhost:8080/register', {
-            method: 'POST',
-            headers: {
-                "X-CSRF-TOKEN": csrfToken,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ username, email, password, levelOfEnglish })
-        });
-
-        if (!response.ok) {
-            const errorResponse = await response.json();
-            console.error('Registration failed:', errorResponse);
-        }
-
-        const result = await response.json();
-        console.log('Registration successful:', result);
-    } catch (error) {
-        console.error('There was an error registering!', error);
+    if (!response.ok) {
+        const errorResponse = await response.json();
+        throw new Error(errorResponse.message || 'Registration failed');
     }
+
+    return await response.json();
 };
 
 export default registrationService;
