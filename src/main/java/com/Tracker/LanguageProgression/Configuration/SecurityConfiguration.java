@@ -16,8 +16,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Configuration
@@ -46,22 +48,7 @@ public class SecurityConfiguration {
                 .userDetailsService(additionalUserDetails)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .httpBasic(Customizer.withDefaults()
-                )
-
-                .cors(httpSecurityCorsConfigurer -> {
-                    CorsConfiguration corsConfiguration = new CorsConfiguration();
-                    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-
-                    corsConfiguration.setAllowedOrigins(List.of("http://localhost:5173"));
-                    corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-                    corsConfiguration.setAllowedHeaders(List.of("X-XSRF-TOKEN", "Content-Type"));
-                    corsConfiguration.setAllowCredentials(true);
-
-                    // as far as i know that thing is a replacement for "registry.addMapping("/**")"
-                    // located in the corsConfigurer
-                    source.registerCorsConfiguration("/**", corsConfiguration);
-                    httpSecurityCorsConfigurer.configurationSource(source);
-                });
+                );
         return http.build();
     }
 
@@ -73,6 +60,18 @@ public class SecurityConfiguration {
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
         return configuration.getAuthenticationManager();
+    }
+
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(List.of("http://localhost:5173"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        configuration.setAllowedHeaders(List.of("*"));
+        configuration.setAllowCredentials(true);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
     }
 
     @Bean
