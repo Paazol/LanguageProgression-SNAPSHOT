@@ -62,6 +62,7 @@ public class SecurityConfiguration {
         return configuration.getAuthenticationManager();
     }
 
+    // How on earth do i fix dat thing??????
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
