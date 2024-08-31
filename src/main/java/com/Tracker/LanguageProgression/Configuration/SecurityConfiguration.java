@@ -33,6 +33,7 @@ public class SecurityConfiguration {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .sessionManagement(sessionManagement -> sessionManagement.sessionFixation().migrateSession()
                         .maximumSessions(1)
                         .maxSessionsPreventsLogin(true))
