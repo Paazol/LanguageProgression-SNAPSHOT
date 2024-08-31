@@ -23,7 +23,7 @@ public class SecurityConfiguration {
 
 	private final AdditionalUserDetails additionalUserDetails;
 	private final JwtAuthenticationFilter jwtAuthFilter;
-
+	// test
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
