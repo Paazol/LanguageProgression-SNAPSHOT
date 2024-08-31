@@ -35,14 +35,12 @@ public class AdditionalUserDetails implements UserDetailsService {
 	}
 
 	public Long getAuthenticatedUserID() {
-		Long id = getAuthenticatedUser().getId();
-		return id;
+		return getAuthenticatedUser().getId();
 
 	}
 
 	public String getLevelOfEnglish() {
-		String levelOfEnglish = getAuthenticatedUser().getLevelOfEnglish();
-		return levelOfEnglish;
+		return getAuthenticatedUser().getLevelOfEnglish();
 	}
 
 }
