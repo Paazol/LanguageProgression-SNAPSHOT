@@ -49,7 +49,8 @@ public class SecurityConfiguration {
                 .userDetailsService(additionalUserDetails)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .httpBasic(Customizer.withDefaults()
-                );
+                ).
+        csrf(csrf -> csrf.disable());
         return http.build();
     }
 

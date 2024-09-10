@@ -26,8 +26,6 @@ import lombok.Data;
 @SequenceGenerator(name = "user_seq", sequenceName = "users_SEQ", allocationSize = 1)
 public class User implements UserDetails {
 
-	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
 	@Column(name = "id")

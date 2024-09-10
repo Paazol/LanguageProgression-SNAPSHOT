@@ -1,3 +1,3 @@
-cd "D:\EclipseProjects\LanguageProgression-SNAPSHOT\src\main\frontend"
+cd "D:\Coding\Projects\clone\LanguageProgression-SNAPSHOT\src\main\frontend"
 npm run dev
 PAUSE

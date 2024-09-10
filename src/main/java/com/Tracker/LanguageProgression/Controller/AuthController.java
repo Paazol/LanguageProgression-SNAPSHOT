@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Tracker.LanguageProgression.Entity.User;
@@ -19,7 +20,7 @@ public class AuthController {
 	private AuthenticationService authenticationService;
 
 	@PostMapping("/register")
-    public ResponseEntity<AuthenticationResponse> register(@ModelAttribute User request) {
+    public ResponseEntity<AuthenticationResponse> register(@RequestBody User request) {
         AuthenticationResponse response = authenticationService.register(request);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Location", "/home");
