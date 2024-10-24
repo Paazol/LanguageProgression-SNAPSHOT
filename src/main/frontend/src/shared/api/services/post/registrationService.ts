@@ -1,5 +1,5 @@
 import React from "react";
-import {getCookies} from '../../../lib/utils/getCookies.js'
+import getCookie from '../../../lib/utils/getCookies'
 const registrationService = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -17,16 +17,17 @@ const registrationService = async (e: React.FormEvent<HTMLFormElement>) => {
     });
    
     
-    let csrfToken = await getCookies();
-    console.log(csrfToken);
+    let xsrfToken = await getCookie("XSRF-TOKEN");
+    console.log(xsrfToken);
     const response = await fetch('http://localhost:8080/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': csrfToken.token
+            'XSRF-TOKEN': xsrfToken || '',
         },
         body: JSON.stringify({username, email, password, levelOfEnglish})
     });
+    console.log(xsrfToken);
 
     if (!response.ok) {
         const errorResponse = await response.json();
