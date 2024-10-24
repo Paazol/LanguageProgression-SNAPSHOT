@@ -1,8 +1,8 @@
-function getCookie(name: string): string | undefined  {
+function getCookie(name: string) {
     let value = `; ${document.cookie}`;
-    console.log(document.cookie);
-    let parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop()?.split(';').shift();
-    return undefined;   
+    let parts = value.split(`${name}`);
+    
+    console.log(parts)
+    return undefined;
 }
 export default getCookie
