@@ -17,7 +17,7 @@ const registrationService = async (e: React.FormEvent<HTMLFormElement>) => {
     });
    
     
-    let xsrfToken = await getCookie("XSRF-TOKEN");
+    let xsrfToken = await getCookie("XSRF-TOKEN", "http://localhost:8080/security/csrf-token");
     console.log(xsrfToken);
     const response = await fetch('http://localhost:8080/register', {
         method: 'POST',
