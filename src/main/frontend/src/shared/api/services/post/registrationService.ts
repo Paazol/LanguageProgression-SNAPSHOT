@@ -12,7 +12,7 @@ const registrationService = async (e: React.FormEvent<HTMLFormElement>) => {
     const levelOfEnglish = formData.get("levelOfEnglish") as string;
 
     let getCsrfToken = await fetch("http://localhost:8080/security/csrf-token", {
-        method: "GET",
+        method: "GET", 
         credentials: "include"
     });
    
