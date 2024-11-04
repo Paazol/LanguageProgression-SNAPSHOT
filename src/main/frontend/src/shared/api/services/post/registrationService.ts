@@ -1,6 +1,5 @@
 import React from "react";
-import Cookies from 'js-cookie';
-
+import getCookie from '../../../lib/utils/getCookies'
 const registrationService = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -12,41 +11,29 @@ const registrationService = async (e: React.FormEvent<HTMLFormElement>) => {
     const password = formData.get("password") as string;
     const levelOfEnglish = formData.get("levelOfEnglish") as string;
 
-    async function getCsrfToken() {
-        const response = await fetch('http://localhost:8080/security/csrf-token', {
-            method: "GET",
-            credentials: 'include'
-        });
-        if (!response.ok) {
-            throw new Error('Failed to fetch CSRF token');
-        }
-        const csrfToken = await response.json();
-
-        return Cookies.set("X-CSRF-TOKEN", csrfToken.token, { expires: 1 });
-    }
-
-    let csrfToken = Cookies.get("X-CSRF-TOKEN") as string;
-
-    if(!csrfToken) {
-        csrfToken = await getCsrfToken() as string;
-    }
-
-    console.log(csrfToken);
+    let getCsrfToken = await fetch("http://localhost:8080/security/csrf-token", {
+        method: "GET", 
+        credentials: "include"
+    });
+   
+    
+    let xsrfToken = await getCookie("XSRF-TOKEN", "http://localhost:8080/security/csrf-token");
+    console.log(xsrfToken);
     const response = await fetch('http://localhost:8080/register', {
         method: 'POST',
         headers: {
-            "X-CSRF-TOKEN": csrfToken,
             'Content-Type': 'application/json',
+            'XSRF-TOKEN': xsrfToken || '',
         },
-        body: JSON.stringify({ username, email, password, levelOfEnglish })
+        body: JSON.stringify({username, email, password, levelOfEnglish})
     });
+    console.log(xsrfToken);
 
     if (!response.ok) {
         const errorResponse = await response.json();
         throw new Error(errorResponse.message || 'Registration failed');
     }
-
     return await response.json();
-};
+    }
 
 export default registrationService;

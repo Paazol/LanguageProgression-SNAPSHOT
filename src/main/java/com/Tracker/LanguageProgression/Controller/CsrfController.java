@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CsrfController {
 
     @GetMapping("/csrf-token")
-    public CsrfToken getCsrfToken(CsrfToken csrfToken) {
-        return csrfToken;
+    public String getCsrfToken(CsrfToken csrfToken) {
+        return csrfToken.getToken();
     }
 }
