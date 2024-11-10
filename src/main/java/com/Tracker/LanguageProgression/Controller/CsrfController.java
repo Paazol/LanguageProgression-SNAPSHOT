@@ -1,25 +1,26 @@
 package com.Tracker.LanguageProgression.Controller;
 
-import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.csrf.CsrfToken;
+import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
-import java.util.HashMap;
-import java.util.Map;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/security")
 public class CsrfController {
-
-    @GetMapping("/csrf-token")
-    public JSONResponse getCsrfToken(HttpServletRequest request) {
-        JSONResponse jsonResponse = new JSONResponse();
-        CsrfToken csrfToken = (CsrfToken) request.getAttribute(CsrfToken.class.getName());
-        String token = csrfToken.getToken();
-        jsonResponse.addMsg("csrfToken", token);
-        return jsonResponse;
+	
+	@Autowired
+	private CsrfTokenRepository csrfTokenRepository;
+	
+	@GetMapping("/csrf-token")
+    public String getCsrfToken(HttpServletRequest request, HttpServletResponse response) {
+		CsrfToken csrfToken = csrfTokenRepository.generateToken(request);
+		csrfTokenRepository.saveToken(csrfToken, request, response);
+        return csrfToken.getToken();
     }
 }
