@@ -11,7 +11,7 @@ const registrationService = async (e: React.FormEvent<HTMLFormElement>) => {
     const password = formData.get("password") as string;
     const levelOfEnglish = formData.get("levelOfEnglish") as string;
 
-    let сsrfToken = await getCsrfToken("XSRF-TOKEN", "http://localhost:8080/security/csrf-token");
+    let сsrfToken = await getCsrfToken();
     console.log(сsrfToken);
     const response = await fetch('http://localhost:8080/register', {
         method: 'POST',
