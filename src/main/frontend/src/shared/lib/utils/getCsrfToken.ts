@@ -1,9 +1,15 @@
 async function getCsrfToken() {
-
-    const response = fetch('http://localhost:8080/security/csrf-token')
-    const csrfToken = (await response).text   
-    return csrfToken    
+    try {
+        const response = await fetch('http://localhost:8080/security/csrf-token');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const csrfToken = await response.text();
+        return csrfToken || '';
+    } catch (error) {
+        console.error('Error fetching CSRF token:', error);
+        return '';
+    }
 }
 
-export default getCsrfToken;
-s
+export default getCsrfToken
