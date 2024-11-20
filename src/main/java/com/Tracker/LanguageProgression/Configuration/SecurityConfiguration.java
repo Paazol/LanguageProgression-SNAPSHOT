@@ -68,7 +68,7 @@ public class SecurityConfiguration {
     public CsrfTokenRepository csrfTokenRepository() {
     	return new CookieCsrfTokenRepository();
     }
-    
+
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
