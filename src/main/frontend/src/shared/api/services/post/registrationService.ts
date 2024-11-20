@@ -17,7 +17,7 @@ const registrationService = async (e: React.FormEvent<HTMLFormElement>) => {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': encodeURIComponent(сsrfToken),
+            'X-CSRF-TOKEN': сsrfToken,
         },
         body: JSON.stringify({username, email, password, levelOfEnglish})
     });
