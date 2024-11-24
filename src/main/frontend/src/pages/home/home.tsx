@@ -1,23 +1,21 @@
 import React, {useEffect, useState} from "react";
 import './home.css'
+import { User } from "../../shared/api/models/user";
+import { Post } from "../../shared/api/models/post";
 
-interface Post {
-    id: number;
-    idOfAnAuthor: number;
-    title: string;
-    suggestedLevelOfEnglish: string;
-    containment: string;
-    username: string;
+interface homeData {
+    avatarById: Post[],
+    user: User;
 }
 
-const Home: React.FC = () =>{
+const Home: React.FC = () => {
     const [posts, setPosts] = useState<Post[]>([]);
 
     useEffect(() => {
         fetch('http://localhost:8080/getHomeData')
             .then(response => response.json())
             .then(data => setPosts(data))
-            .catch(error => console.error('Error fetching posts:', error));
+            .catch(error => console.error('Error fetching: ', error));
     }, []);
     return (
         <>
