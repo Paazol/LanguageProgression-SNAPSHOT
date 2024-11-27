@@ -25,8 +25,8 @@ const Home: React.FC = () => {
             <link rel="stylesheet" type="text/css" href="../../css/home.css" />
             <div id="dropdown-menu"></div> {/* Assuming the dropdown menu is initialized by the script */}
             <div className="background" />
-            {avatarByID.map((avatar) => (
-                <div key={avatar.post.id} className="postDIV">
+            {avatarById.map((avatar) => (
+                <div className="postDIV">
                     <div className="postBackground" />
                     <div className="postCardDIV">
                         <a className="authorOfAPost" href={`/${avatar.post.idOfAnAuthor}`}>

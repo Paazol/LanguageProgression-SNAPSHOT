@@ -1,5 +1,5 @@
 import React from "react";
-import dropdownMenu from "../../shared/ui/dropdownMenu/dropdownMenu";
+import DropdownMenu from "../../shared/ui/dropdownMenu/dropdownMenu";
 
 const Profile: React.FC = () => {
     return (
@@ -19,16 +19,14 @@ const Profile: React.FC = () => {
     <script src = "/src/main/frontend/src/js/following.js"></script>
     <script src="/src/main/frontend/src/js/cropper.js"></script>
 
-    <div th:insert="~{Generic/dropdownMenu::dropdown(false, true, true, true, true)}"></div>
-    
     <div>
-        <dropdownMenu
+        <DropdownMenu
         profile={true}
         login={true}
         home={true}
-        post={true}
+        posts={true}
         logout={true}
-        sessionID={24}
+        sessionID={"24"}
         />
     </div>
 
