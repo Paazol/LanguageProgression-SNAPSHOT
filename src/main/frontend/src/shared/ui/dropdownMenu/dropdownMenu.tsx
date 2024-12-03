@@ -9,7 +9,7 @@ interface dropdownOptions {
     sessionID: string | null
 }
 
-const dropdownMenu: React.FC<dropdownOptions> = ({profile, login, home, posts, logout, sessionID}) => {
+const DropdownMenu: React.FC<dropdownOptions> = ({profile, login, home, posts, logout, sessionID}) => {
     return (
         <div className="menuDIV">
             <button className="menuBUTTON">
@@ -26,5 +26,4 @@ const dropdownMenu: React.FC<dropdownOptions> = ({profile, login, home, posts, l
     )
 }
 
-export default dropdownMenu;
-
+export default DropdownMenu;
