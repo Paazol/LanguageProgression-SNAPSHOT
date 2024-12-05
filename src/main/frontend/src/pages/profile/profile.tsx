@@ -1,5 +1,16 @@
 import React from "react";
 import DropdownMenu from "../../shared/ui/dropdownMenu/dropdownMenu";
+import { User } from "../../shared/api/models/user";
+import { Post } from "../../shared/api/models/post";
+import { Avatar } from "../../shared/api/models/avatar.ts";
+import {Session} from "../../shared/api/models/session.ts";
+
+interface homeData {
+    avatarById: Post[],
+    avatar: Avatar,
+    user: User,
+    session: Session
+}
 
 const Profile: React.FC = () => {
     return (
@@ -33,7 +44,7 @@ const Profile: React.FC = () => {
     <div className="profileDIV">
         <div className="profileBackground"></div>
         <div className="profileCardDIV">
-            <div>{sessionID === userID &&  (
+            <div>{homeData.session.id === user.id &&  (
             <form action="${'/' + session.id + '/upload'}" method="post" enctype="multipart/form-data">
                 <button className="profilePictureUpload" type="submit">Upload avatar</button>
                 <input id="profilePictureINPUT" name="profilePicture" type="file" draggable="true">

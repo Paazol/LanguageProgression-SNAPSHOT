@@ -2,10 +2,12 @@ import React, {useEffect, useState} from "react";
 import './home.css'
 import { User } from "../../shared/api/models/user";
 import { Post } from "../../shared/api/models/post";
+import { Avatar } from "../../shared/api/models/avatar.ts";
 
 interface homeData {
     avatarById: Post[],
-    user: User;
+    avatar: Avatar,
+    user: User
 }
 
 const Home: React.FC = () => {
@@ -23,9 +25,8 @@ const Home: React.FC = () => {
             <title>Home</title>
             <link rel="stylesheet" type="text/css" href="../../shared/styles/generic.css" />
             <link rel="stylesheet" type="text/css" href="../../css/home.css" />
-            <div id="dropdown-menu"></div> {/* Assuming the dropdown menu is initialized by the script */}
             <div className="background" />
-            {avatarByID.map((avatar) => (
+            {homeData.avatarById.map((avatar) => (
                 <div key={avatar.post.id} className="postDIV">
                     <div className="postBackground" />
                     <div className="postCardDIV">
