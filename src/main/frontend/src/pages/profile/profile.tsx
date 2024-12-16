@@ -3,7 +3,9 @@ import DropdownMenu from "../../shared/ui/dropdownMenu/dropdownMenu";
 import { User } from "../../shared/api/models/user";
 import { Post } from "../../shared/api/models/post";
 import { Avatar } from "../../shared/api/models/avatar.ts";
-import {Session} from "../../shared/api/models/session.ts";
+import { Session } from "../../shared/api/models/session.ts";
+import { fetchData } from "../../shared/api/services/get/fetchData.ts";
+
 
 interface homeData {
     avatarById: Post[],
@@ -12,7 +14,9 @@ interface homeData {
     session: Session
 }
 
-const Profile: React.FC = () => {
+const data = fetchData<homeData>("http://localhost:8080/getHomeData");
+
+const Profile: React.FC = async () => {
     return (
 <>
     <meta charSet="utf-8"/>
@@ -44,21 +48,21 @@ const Profile: React.FC = () => {
     <div className="profileDIV">
         <div className="profileBackground"></div>
         <div className="profileCardDIV">
-            <div>{homeData.session.id === user.id &&  (
-            <form action="${'/' + session.id + '/upload'}" method="post" enctype="multipart/form-data">
+            <div>{(await data).session.id === (await data).user.id &&  (
+            <form action="${'/' + session.id + '/upload'}" method="post" encType="multipart/form-data">
                 <button className="profilePictureUpload" type="submit">Upload avatar</button>
-                <input id="profilePictureINPUT" name="profilePicture" type="file" draggable="true">
+                <input id="profilePictureINPUT" name="profilePicture" type="file" draggable="true"/>
             </form>
             )}
         </div>
-        <img className="userAvatar" src="${avatarByID}">
+        <img className="userAvatar" src="${avatarByID}"/>
             <span className="levelOfEnglishSPAN">
                 <p className="levelOfEnglish">
-                    Level: <span text="${session.levelOfEnglish}"></span>
+                    Level: <span text="{session.levelOfEnglish}"></span>
                 </p>
             </span>
 
-            <a className="createPosts" ="${session.id == userID}" th:href="${'/' + session.id + '/create'}">Create post</a>
+            <a className="createPosts" text="${session.id == userID}" href="/ session.id /create">Create post</a>
 
             <span className="viewPostsSPAN">
                 <a className="viewPosts" href="${'/' + session.id + '/posts'}">View posts</a>

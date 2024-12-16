@@ -1,3 +1,3 @@
 export interface Session {
-    id: number
+    id: bigint
 }
