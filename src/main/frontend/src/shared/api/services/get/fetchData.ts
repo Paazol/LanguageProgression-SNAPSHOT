@@ -4,7 +4,7 @@
  * @param interfaceType - The interface that defines the structure of the expected data.
  * @returns A promise that resolves to the fetched data, typed according to the provided interface.
  */
-export async function fetchData<interfaceType>(url: string): Promise<interfaceType> {
+export default async function fetchData<T extends Record<string, any>>(url: string, fields: (keyof T)[]){
     try {
         // Fetch data from the API
         const response = await fetch(url);
@@ -15,12 +15,17 @@ export async function fetchData<interfaceType>(url: string): Promise<interfaceTy
         }
 
         // Parse the JSON response
-        const data = await response.json();
+        const data: T = await response.json();
 
         // Type-check the data against the provided interface
-        const typedData = data as interfaceType;
+        const result: Partial<T> = {};
+        fields.forEach((field) => {
+            if(data.hasProperty(field)){
+                result[field] = data[field]
+            }
+        })
 
-        return typedData;
+        return result;
     } catch (error) {
         console.error("Error fetching data:", error);
         throw error;

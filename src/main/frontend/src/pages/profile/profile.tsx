@@ -14,7 +14,9 @@ interface homeData {
     session: Session
 }
 
-const data = fetchData<homeData>("http://localhost:8080/getHomeData");
+const dataFields: (keyof homeData)[];
+
+const data = fetchData("http://localhost:8080/getHomeData", dataFields);
 
 const Profile: React.FC = async () => {
     return (
@@ -48,7 +50,7 @@ const Profile: React.FC = async () => {
     <div className="profileDIV">
         <div className="profileBackground"></div>
         <div className="profileCardDIV">
-            <div>{(await data).session.id === (await data).user.id &&  (
+            <div>{session.id === user.id && (
             <form action="${'/' + session.id + '/upload'}" method="post" encType="multipart/form-data">
                 <button className="profilePictureUpload" type="submit">Upload avatar</button>
                 <input id="profilePictureINPUT" name="profilePicture" type="file" draggable="true"/>
