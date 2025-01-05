@@ -3,6 +3,7 @@
  * @param url - The API endpoint URL.
  * @param interfaceType - The interface that defines the structure of the expected data.
  * @returns A promise that resolves to the fetched data, typed according to the provided interface.
+ * BEFORE CREATING AN INTERFACES PLEASE CHECK FOR THE TYPES IN THE DATABASE
  */
 export default async function fetchData<T extends Record<string, any>>(url: string, fields: (keyof T)[]){
     try {
@@ -17,10 +18,10 @@ export default async function fetchData<T extends Record<string, any>>(url: stri
         // Parse the JSON response
         const data: T = await response.json();
 
-        // Type-check the data against the provided interface
+        
         const result: Partial<T> = {};
         fields.forEach((field) => {
-            if(data.hasProperty(field)){
+            if(data.hasOwnProperty(field)){
                 result[field] = data[field]
             }
         })

@@ -4,7 +4,7 @@ import { User } from "../../shared/api/models/user";
 import { Post } from "../../shared/api/models/post";
 import { Avatar } from "../../shared/api/models/avatar.ts";
 import { Session } from "../../shared/api/models/session.ts";
-import { fetchData } from "../../shared/api/services/get/fetchData.ts";
+import fetchData from "../../shared/api/services/get/fetchData.ts";
 
 
 interface homeData {
@@ -14,11 +14,11 @@ interface homeData {
     session: Session
 }
 
-const dataFields: (keyof homeData)[];
+const fields: (keyof homeData)[] = ["avatarById", "avatar", "user", "session"]
 
-const data = fetchData("http://localhost:8080/getHomeData", dataFields);
+const data = await fetchData("http://localhost:8080/getHomeData", fields);
 
-const Profile: React.FC = async () => {
+const Profile: React.FC = () => {
     return (
 <>
     <meta charSet="utf-8"/>
@@ -43,31 +43,31 @@ const Profile: React.FC = async () => {
         home={true}
         posts={true}
         logout={true}
-        sessionID={"24"} />
+        sessionID={data.session.id} />
     </div>
 
     <div className="background"></div> 
     <div className="profileDIV">
         <div className="profileBackground"></div>
         <div className="profileCardDIV">
-            <div>{session.id === user.id && (
-            <form action="${'/' + session.id + '/upload'}" method="post" encType="multipart/form-data">
+            <div>{data.session.id === data.user.id && (
+            <form action={'/' + data.session.id + '/upload'} method="post" encType="multipart/form-data">
                 <button className="profilePictureUpload" type="submit">Upload avatar</button>
                 <input id="profilePictureINPUT" name="profilePicture" type="file" draggable="true"/>
             </form>
             )}
         </div>
-        <img className="userAvatar" src="${avatarByID}"/>
+        <img className="userAvatar" src={data.avatar.id}/>
             <span className="levelOfEnglishSPAN">
                 <p className="levelOfEnglish">
-                    Level: <span text="{session.levelOfEnglish}"></span>
+                    Level: <span>{data.session.levelOfEnglish}</span>
                 </p>
             </span>
 
-            <a className="createPosts" text="${session.id == userID}" href="/ session.id /create">Create post</a>
+            <a className="createPosts"  href={"/" + data.session.id + "/create"}>{data.session.id === data.user.id ? "Create post" : ""}</a>
 
             <span className="viewPostsSPAN">
-                <a className="viewPosts" href="${'/' + session.id + '/posts'}">View posts</a>
+                <a className="viewPosts" href={"/" + data.session.id + "/posts"}>View posts</a>
             </span>
             <button className="followBUTTON">Follow</button>     
         </div>
