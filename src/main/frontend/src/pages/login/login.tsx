@@ -5,18 +5,17 @@ import "./login.css";
 const Login: React.FC = () => {
     return (
     <div>
-        <meta name="csrf-token" content="your-csrf-token-here"/>
-        <form method="post" action="localhost://8080/login">
+        <form method="post">
             <div className="background"></div>
             <div className="wrapper colorable">
                 <h1 id="loginMainHeader">Login</h1>
                 <div className="Input">
-                    <input maxLength="20" name="username" required type="text"/>
+                    <input maxLength={20} name="username" required type="text"/>
                     <label>Username</label>
                     <img className="loginICONS" src="../../../public/Auth/user.png" alt="Account Icon"/>
                 </div>
                 <br/>
-                <div className="Input">
+                <div className="Input"> 
                     <input id="password" name="password" required type="password"/>
                     <label>Password</label>
                     <img className="loginICONS" src="../../../public/Auth/lock_closed.png" alt="Lock Icon"/>

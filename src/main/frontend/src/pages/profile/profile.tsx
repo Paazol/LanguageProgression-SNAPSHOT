@@ -31,6 +31,7 @@ const Profile: React.FC = () => {
         rel="stylesheet"
         type="text/css"
         href="/src/main/frontend/src/css/profile.css"/>
+    <link rel="icon" href="data:,"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
     <script src="/src/main/frontend/src/js/dropDownBUTTON.js"></script>
     <script src = "/src/main/frontend/src/js/following.js"></script>

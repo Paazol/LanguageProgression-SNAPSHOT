@@ -9,11 +9,11 @@ const Register: React.FC = () => {
     <div>
         <div className="background"></div>
         <div className="wrapper colorable">
-            <form onSubmit={registrationService} method="post">
+            <form onSubmit={registrationService} action="http://localhost:5173/home" method="post">
                 <h1 id="registerMainHeader">Register</h1>
 
-                <div className="Input   ">
-                    <input name="username" type="text" maxLength="20" required/>
+                <div className="Input">
+                    <input name="username" type="text" maxLength={20} required/>
                     <label>Username</label>
                     <img className="loginICONS" src="../../../public/Auth/user.png"/>
                 </div>

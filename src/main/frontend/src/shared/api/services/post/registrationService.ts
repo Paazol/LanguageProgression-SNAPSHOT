@@ -1,5 +1,5 @@
 import React from "react";
-import getCsrfToken from '../../../lib/utils/getCsrfToken'
+import getCsrfToken from "../../../lib/utils/getCsrfToken"
 const registrationService = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -12,12 +12,12 @@ const registrationService = async (e: React.FormEvent<HTMLFormElement>) => {
     const levelOfEnglish = formData.get("levelOfEnglish") as string;
 
     let сsrfToken = await getCsrfToken();
-    console.log(сsrfToken);
-    const response = await fetch('http://localhost:8080/register', {
-        method: 'POST',
+
+    const response = await fetch("http://localhost:8080/register", {
+        method: "POST",
         headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': сsrfToken,
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": сsrfToken,
         },
         body: JSON.stringify({username, email, password, levelOfEnglish})
     });
@@ -25,8 +25,9 @@ const registrationService = async (e: React.FormEvent<HTMLFormElement>) => {
 
     if (!response.ok) {
         const errorResponse = await response.json();
-        throw new Error(errorResponse.message || 'Registration failed');
+        throw new Error(errorResponse.message || "Registration failed");
     }
+    
     return await response.json();
     }
 

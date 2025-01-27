@@ -1,8 +1,8 @@
-import './home.css'
+import "./home.css"
 import { User } from "../../shared/api/models/user";
 import { Post } from "../../shared/api/models/post";
 import { Avatar } from "../../shared/api/models/avatar.ts";
-import fetchData from '../../shared/api/services/get/fetchData.ts';
+import fetchData from "../../shared/api/services/get/fetchData.ts";
 
 interface homeData {
     post: Post[],
@@ -21,8 +21,7 @@ const Home: React.FC = () => {
             <title>Home</title>
             <link rel="stylesheet" type="text/css" href="../../shared/styles/generic.css" />
             <link rel="stylesheet" type="text/css" href="../../css/home.css" />
-            <div className="background" />
-            {data.post.map((avatar) => (
+            <div className="background"/>
                 <div key={data.post.id} className="postDIV">
                     <div className="postBackground" />
                     <div className="postCardDIV">
@@ -32,23 +31,21 @@ const Home: React.FC = () => {
                                 src={"/" + data.post.suggested_level_of_english + "/image/userAvatar"}
                                 alt="Ohh, no image"
                             />
-                            <h5>by {data.avatar.username}</h5>
+                            <h5>by {data.post.avatar.id}</h5>
                         </a>
-                        <a className="title" href={"/" + data.avatar.username + "/posts/" + data.avatar.post.id}>
-                            {data.avatar.post.title}
+                        <a className="title" href={"/" + data.user.username + "/posts/" + data.post.id}>
+                            {data.post.title}
                         </a>
-                        <small
-                            className="suggestedLevelOfEnglish"
-                            dangerouslySetInnerHTML={"Suggested levels: " + <br /> + data.avatar.post.suggestedLevelOfEnglish}
-                            aria-required="true"
-                        />
-                        <p className="containment">{data.avatar.post.containment}</p>
-                        <a className="continueReading" href={"/" + data.avatar.username + "/posts/" + data.avatar.post.id}>
+                        <small className="suggestedLevelOfEnglish" aria-required="true">
+                            {"Suggested levels: " + data.post.suggestedLevelOfEnglish}
+                        </small>
+                        <p className="containment">{data.post.containment}</p>
+                        <a className="continueReading" href={"/" + data.user.username + "/posts/" + data.post.id}>
                             View
                         </a>
                     </div>
                 </div>
-            ))}
+            ))
         </>
     );
 }

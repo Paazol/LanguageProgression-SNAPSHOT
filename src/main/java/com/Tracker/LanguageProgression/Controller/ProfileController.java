@@ -17,7 +17,8 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class ProfileController {
 
-	// TODO IM FUCKED
+	// TM FUCKED (лето 2024)
+	// а теперь всё нормально, мне почему-то стало легче в коде разбираться, хотя я ничерта и не делал, аахахахах (1/11/2025)
 	
 	private final UserRepository userRepository;
 
