@@ -45,7 +45,7 @@ public class SecurityConfiguration {
 
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login")
-                        .defaultSuccessUrl("/home")
+                        .defaultSuccessUrl("http://localhost:5173/home")
                         .permitAll())
                 .userDetailsService(additionalUserDetails)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)

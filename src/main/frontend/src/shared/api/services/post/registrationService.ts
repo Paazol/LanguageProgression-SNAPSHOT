@@ -2,7 +2,6 @@ import React from "react";
 import getCsrfToken from "../../../lib/utils/getCsrfToken"
 const registrationService = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     const form = e.currentTarget;
     const formData = new FormData(form);
 

@@ -38,12 +38,12 @@ const Register: React.FC = () => {
 
                 <div className="Input" id="passwordRepeatDIV">
                     <input name="repeatedPasswordINPUT" id="repeatedPassword" type="password" required/>
-                    <label id="repeatPasswordLabel">Repeat password</label>
+                    <label>Repeat password</label>
                     <img className="loginICONS" src="../../../public/Auth/lock_repeat.png"/>
                 </div>
 
-                <div className="chooseOfALanguageLevelDIV">
-                    <label className="chooseOfALanguageLevelLABEL">Pick your level of English: </label>
+                <div id="chooseALanguageLevelDIV">
+                    <label id="chooseALanguageLevelLABEL">Pick your level of English: </label>
                     <select name="levelOfEnglish" id="languageLevelOptions">
                         <option id="A0">A0</option>
                         <option id="A1">A1</option>
@@ -53,6 +53,9 @@ const Register: React.FC = () => {
                         <option id="C1">C1</option>
                         <option id="C2">C2</option>
                     </select>
+                </div>
+                <div id="alreadyHaveAnAccountDIV">
+                    <p>Already have an account? <a id="alreadyHaveAnAccountLink" href="http://localhost:5173/login">Login</a> </p>
                 </div>
                 <div id="registerButtonDIV">
                     <button type="submit" id="registerButton">Register</button>

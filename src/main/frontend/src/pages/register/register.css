@@ -97,15 +97,6 @@ body {
 	top: 125px;
 }
 
-.registerP {
-	color: rgb(215, 215, 215);
-}
-
-.registerLink {
-	color: rgb(255, 255, 255);
-	text-decoration: none;
-}
-
 .loginICONS {
 	position: absolute;
 	width: 30px;
@@ -113,10 +104,14 @@ body {
 	right: 1%;
 }
 
+#chooseALanguageLevelDIV {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	top: 20px;
+}
+
 #languageLevelOptions {
-    position: absolute;
-    left: 78%;
-    top: 70%;
     font-size: 16px;
     border-radius: 9px;
     cursor: pointer;
@@ -126,11 +121,21 @@ body {
     color: white;
 }
 
-.chooseOfALanguageLevelLABEL {
-    position: absolute;
+#chooseALanguageLevelLABEL {
     color: #fff;
-    left: 8%;
-    top: 70%;
+}
+
+#alreadyHaveAnAccountDIV {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	top: 40px;
+	color: rgb(215, 215, 215);
+}
+
+#alreadyHaveAnAccountLink {
+	color: #fff;
+	text-decoration: none;
 }
 
 #registerButtonDIV {
@@ -139,9 +144,8 @@ body {
 }
 
 #registerButton {
-	font-family: "Martian Mono", monospace;
-	position: absolute;
-	bottom: 5%;
+	position: relative;
+	top: 65px;
 	width: 400px;
 	height: 60px;
 	font-size: 25px;

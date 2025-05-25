@@ -1,11 +1,13 @@
-import React from 'react';
+import React from "react";
+import loginService from "../../shared/api/services/get/loginService";
+
 import "../../shared/styles/generic.css"
 import "./login.css";
 
 const Login: React.FC = () => {
     return (
     <div>
-        <form method="post">
+        <form method="post" onSubmit={loginService}>
             <div className="background"></div>
             <div className="wrapper colorable">
                 <h1 id="loginMainHeader">Login</h1>
