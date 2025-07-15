@@ -71,7 +71,7 @@ public class AuthenticationService {
         int targetWidth = 230;
         int targetHeight = 230;
 
-        //from multipartfile to the bufferedimage
+        //from multipart file to the buffered image
         BufferedImage originalImage = ImageIO.read(new ByteArrayInputStream(profilePicture.getBytes()));
         //resizing an image
         BufferedImage resizedImage = Scalr.resize(originalImage, Scalr.Method.ULTRA_QUALITY, Scalr.Mode.FIT_EXACT, targetWidth, targetHeight);

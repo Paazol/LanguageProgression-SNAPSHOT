@@ -21,28 +21,28 @@ import lombok.AllArgsConstructor;
 public class PostsController {
 
 	private final PostsService postsService;
-	
-	@GetMapping("/{id}/posts")
+
+	@GetMapping("/post/{id}/posts")
 	public String userPosts(@PathVariable Long id, Model model) {
 		model.addAttribute("posts", postsService.getAllAuthorPosts(id));
 		return "posts";
 	}
-	
-	@GetMapping("/{id}/posts/{postID}")
+
+	@GetMapping("/post/{id}/posts/{postID}")
     public String viewPost(@PathVariable Long postID, Model model) {
         // Fetch the post by ID and add it to the model
         Posts post = postsService.getPostById(postID);
         model.addAttribute("post", post);
-        return "inspectPost"; // Return the name of the Thymeleaf template for viewing a single post
+        return "inspectPost";
     }
 
-	@GetMapping("/{id}/create")
+	@GetMapping("/post/{id}/create")
 	public String postsCreate() {
 		return "createPosts";
 	}
+
 	
-	
-	@PostMapping("/{id}/create/upload")
+	@PostMapping("/post/{id}/create/upload")
     public ResponseEntity<Posts> createPost(@ModelAttribute Posts posts, HttpSession session) {
     	posts.setId(null);
 

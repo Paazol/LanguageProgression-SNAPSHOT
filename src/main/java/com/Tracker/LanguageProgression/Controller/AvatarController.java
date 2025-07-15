@@ -8,10 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.Tracker.LanguageProgression.Entity.User;
@@ -28,7 +25,7 @@ public class AvatarController {
 	private final UserRepository userRepository;
 	private final AuthenticationService authenticationService;
 
-	@GetMapping("/{userID}/image/userAvatar")
+	@GetMapping("/user/{userID}/image/userAvatar")
     public ResponseEntity<byte[]> getProfilePicture(@PathVariable Long userID, HttpSession session) {
 
         Optional<User> user = userRepository.findById(userID);
@@ -41,7 +38,7 @@ public class AvatarController {
         }
     }
     
-    @PostMapping("/{userID}/upload")
+    @PostMapping("/user/{userID}/upload")
     public ResponseEntity<User> createProfilePicture(@PathVariable Long userID, @RequestParam("profilePicture") MultipartFile profilePicture, HttpSession session) throws IOException {
     	HttpHeaders headers = new HttpHeaders();
 

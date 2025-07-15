@@ -3,6 +3,7 @@ import './home.css'
 import { User } from "../../shared/api/models/user";
 import { Post } from "../../shared/api/models/post";
 
+
 interface homeData {
     avatarById: Post[],
     user: User;

@@ -1,4 +1,4 @@
-cd D:\Coding\Projects\LanguageProgression-SNAPSHOT
+cd D:\EclipseProjects\LanguageProgression-SNAPSHOT
 git add .
 git commit -m "AUTO PUSH"
 git push

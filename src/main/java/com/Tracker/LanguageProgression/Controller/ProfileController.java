@@ -12,20 +12,19 @@ import com.Tracker.LanguageProgression.Entity.User;
 import com.Tracker.LanguageProgression.Repository.UserRepository;
 
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @AllArgsConstructor
+@RequestMapping("")
 public class ProfileController {
-
-	// TODO IM FUCKED
-	
 	private final UserRepository userRepository;
 
-	@GetMapping("/{userID}")
+	@GetMapping("/user/{userID}")
 	public String profile(@PathVariable Long userID, Model model) {
 
 		Optional<User> idOfAUser = userRepository.findById(userID);
-		
+
 		model.addAttribute("userID", userID);
 
 		if (idOfAUser.isPresent() && idOfAUser.get().getProfilePicture() != null) {

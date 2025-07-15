@@ -44,8 +44,8 @@ public class SecurityConfiguration {
                 )
 
                 .formLogin(formLogin -> formLogin
-                        .loginPage("/login")
-                        .defaultSuccessUrl("/home")
+                        .loginPage("http://localhost:5173/login")
+                        .defaultSuccessUrl("http://localhost:5173/home")
                         .permitAll())
                 .userDetailsService(additionalUserDetails)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
@@ -78,7 +78,7 @@ public class SecurityConfiguration {
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         
         UrlBasedCorsConfigurationSource source  = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);       
+        source.registerCorsConfiguration("/**", configuration);
         return source;
     }
 }
