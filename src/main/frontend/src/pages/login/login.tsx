@@ -6,7 +6,7 @@ const Login: React.FC = () => {
     return (
     <div>
         <meta name="csrf-token" content="your-csrf-token-here"/>
-        <form method="post" action="localhost://8080/login">
+        <form method="post" action="localhost://8080/api/login">
             <div className="background"></div>
             <div className="wrapper colorable">
                 <h1 id="loginMainHeader">Login</h1>
