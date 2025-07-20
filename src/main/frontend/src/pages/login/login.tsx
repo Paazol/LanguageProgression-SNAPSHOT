@@ -1,17 +1,18 @@
-import React from 'react';
 import "../../shared/styles/generic.css"
 import "./login.css";
+import React from "react";
+
 
 const Login: React.FC = () => {
     return (
     <div>
         <meta name="csrf-token" content="your-csrf-token-here"/>
-        <form method="post" action="localhost://8080/api/login">
+        <form method="post" action="http://localhost:/8080/api/login">
             <div className="background"></div>
             <div className="wrapper colorable">
                 <h1 id="loginMainHeader">Login</h1>
                 <div className="Input">
-                    <input maxLength="20" name="username" required type="text"/>
+                    <input type="text" name="username" maxLength={20} required/>
                     <label>Username</label>
                     <img className="loginICONS" src="../../../public/Auth/user.png" alt="Account Icon"/>
                 </div>
